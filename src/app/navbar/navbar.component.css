@@ -1,0 +1,10 @@
+.nav-item
+{
+  width: 250px;
+  text-align: center;
+  display: inline-block;
+}
+
+.btn {
+  width: 70px;
+}

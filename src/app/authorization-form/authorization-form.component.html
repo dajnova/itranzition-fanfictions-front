@@ -1,0 +1,21 @@
+<div *ngIf="true">
+  <div class="loginAndAuthorization">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active show" href="#login" data-toggle="tab">{{ 'Login' | translate:user}}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#registration" data-toggle="tab">{{'Registration' | translate:user}}</a>
+      </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active" id="login">
+        <app-login></app-login>
+      </div>
+      <div class="tab-pane" id="registration">
+        <app-registration></app-registration>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,29 @@
+.nav-tabs {
+  border-bottom: transparent;
+  border-top: 1px solid #dddddd;
+}
+
+.loginAndAuthorization
+{
+  position: relative;
+  float: right;
+  margin-right: 5%;
+  margin-top: 20px;
+  margin-left: 5px;
+  background: aliceblue;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  display: grid;
+}
+
+.nav-item
+{
+  width: 148px;
+  float: right;
+}
+
+.li
+{
+  width: 178px;
+}
