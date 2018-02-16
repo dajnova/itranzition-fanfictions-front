@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from '@angular/router';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -16,6 +16,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MessageService} from 'primeng/components/common/messageservice';
 import {GrowlModule} from 'primeng/growl';
 import {PanelModule} from 'primeng/panel';
+import {OrderListModule} from 'primeng/primeng';
+import { JwtInterceptor } from './interception/jwt.interceptor';
+import {AuthenticationService} from './services/auth.service';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent}
@@ -46,10 +49,17 @@ const appRoutes: Routes = [
       }
     }),
     GrowlModule,
-    PanelModule
+    PanelModule,
+    OrderListModule
   ],
   providers: [
-    MessageService
+    MessageService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })
