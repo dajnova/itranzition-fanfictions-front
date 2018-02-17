@@ -1,4 +1,4 @@
-<div *ngIf="true">
+<div *ngIf="!isAuthorized(); else elseBlock">
   <div class="loginAndAuthorization">
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -16,6 +16,17 @@
         <app-registration></app-registration>
       </div>
     </div>
+   </div>
+ </div>
+<ng-template #elseBlock>
+  <div class="authorizedWindow">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link active show" href="#authorized" data-toggle="tab">{{ 'Hello' | translate:user}}</a>
+      </li>
+    </ul>
+    <div class="tab-pane active" id="authorized">
+      <button></button>
+    </div>
   </div>
-</div>
-
+</ng-template>

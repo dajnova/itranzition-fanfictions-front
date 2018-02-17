@@ -18,6 +18,21 @@
   height: 390px;
 }
 
+.authorizedWindow
+{
+  position: relative;
+  float: right;
+  margin-right: 2%;
+  margin-top: 1%;
+  margin-left: 1%;
+  background: aliceblue;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 1%;
+  display: grid;
+  height: 90px;
+}
+
 .nav-item
 {
   width: 148px;

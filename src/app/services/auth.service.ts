@@ -26,6 +26,7 @@ export class AuthenticationService {
         }
       );
   }
+
   logout() {
     localStorage.removeItem('currentUser');
     this.router.navigate(['/']);

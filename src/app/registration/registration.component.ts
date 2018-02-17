@@ -46,6 +46,7 @@ export class RegistrationComponent implements OnInit {
       name: this.username,
       password: this.password
     };
+    this.auth.register(user);
     if (localStorage.getItem('currentUser.emailUnique') === 'false') {
       this.msgs.push({severity: 'error', summary: 'Error', detail: 'This email is already in use'});
     }

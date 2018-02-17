@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthenticationService} from '../services/auth.service';
+import {Profile} from '../profile';
 
 @Component({
   selector: 'app-authorization-form',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthorizationFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(auth: AuthenticationService) {
+  }
 
   ngOnInit() {
+  }
+
+  isAuthorized(): boolean {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser && currentUser.token) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
