@@ -16,9 +16,12 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MessageService} from 'primeng/components/common/messageservice';
 import {GrowlModule} from 'primeng/growl';
 import {PanelModule} from 'primeng/panel';
-import {OrderListModule} from 'primeng/primeng';
+import {DataListModule, OrderListModule} from 'primeng/primeng';
 import { JwtInterceptor } from './interception/jwt.interceptor';
 import {AuthenticationService} from './services/auth.service';
+import { HotFicsComponent } from './hot-fics/hot-fics.component';
+import { FindFicsComponent } from './find-fics/find-fics.component';
+import { FreshFicsComponent } from './fresh-fics/fresh-fics.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent}
@@ -32,7 +35,10 @@ const appRoutes: Routes = [
     AuthorizationFormComponent,
     MainComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    HotFicsComponent,
+    FindFicsComponent,
+    FreshFicsComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +56,8 @@ const appRoutes: Routes = [
     }),
     GrowlModule,
     PanelModule,
-    OrderListModule
+    OrderListModule,
+    DataListModule
   ],
   providers: [
     MessageService,

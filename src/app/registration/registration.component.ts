@@ -17,7 +17,6 @@ export class RegistrationComponent implements OnInit {
   password: string;
   username: string;
   userform: FormGroup;
-
   submitted: boolean;
 
   constructor(private fb: FormBuilder, private auth: AuthenticationService) {}
@@ -42,12 +41,21 @@ export class RegistrationComponent implements OnInit {
   onSubmit(value: string) {
     this.submitted = true;
     this.msgs = [];
-    this.msgs.push({severity: 'info', summary: 'Success', detail: 'Form Submitted'});
     const user: Profile = {
       email: this.email,
       name: this.username,
       password: this.password
     };
-    this.auth.register(user);
-}
+    if (localStorage.getItem('currentUser.emailUnique') === 'false') {
+      this.msgs.push({severity: 'error', summary: 'Error', detail: 'This email is already in use'});
+    }
+    if (localStorage.getItem('currentUser.usernameUnique') === 'false') {
+      this.msgs.push({severity: 'error', summary: 'Error', detail: 'This username is already in use'}); }
+    if (localStorage.getItem('currentUser.usernameUnique') === 'true'
+      && localStorage.getItem('currentUser.emailUnique') === 'true') {
+      this.msgs.push({severity: 'success', summary: 'Success', detail: 'Form submitted. Confirmation email has been sent'});
+      this.userform.reset();
+    }
+    localStorage.removeItem('currentUser');
+  }
 }

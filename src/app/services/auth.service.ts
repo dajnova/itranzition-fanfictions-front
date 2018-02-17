@@ -8,7 +8,7 @@ import {Profile} from '../profile';
 export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) { }
 
-  public register(user: Profile) {
+  public register(user: Profile){
     this.http.post('/api/register', user)
       .map(data => JSON.stringify(data))
       .subscribe(
@@ -17,7 +17,7 @@ export class AuthenticationService {
         }
       );
   }
-  public login(user: Profile) {
+  public login(user: Profile){
     this.http.post('/api/login', user)
       .map(data => JSON.stringify(data))
       .subscribe(

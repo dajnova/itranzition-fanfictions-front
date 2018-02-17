@@ -1,6 +1,8 @@
 <footer>
-  <button class="btn btn-primary" (click)="switchLanguage('en')">en</button>
-  <button (click)="switchLanguage('ru')">ru</button>
+  <div class="center">
+    <button class="btn btn-primary" (click)="switchLanguage('en')">en</button>
+    <button class="btn btn-primary" (click)="switchLanguage('ru')">ru</button>
+  </div>
   <br>
   <p>
     {{'PoweredBy' | translate:user}} <a href="https://vk.com/dajnova">{{'Creator1' | translate:user}}</a> {{'and' | translate:user }} <a href="https://vk.com/alesk1">{{'Creator2' | translate:user}}</a>
