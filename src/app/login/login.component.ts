@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       password: this.password,
     };
     this.auth.login(user)
-      .subscribe((data) => localStorage.setItem('currentUser', data)
+      .subscribe((data) => localStorage.setItem('currentUser', data),
                  (err) => this.msgs.push({severity: 'error', summary: 'Error', detail: 'Activate your account first'})
       );
   }

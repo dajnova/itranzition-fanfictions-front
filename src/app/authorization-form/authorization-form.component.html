@@ -1,4 +1,4 @@
-<div *ngIf="!isAuthorized(); else elseBlock">
+<div *ngIf="isAuthorized(); else elseBlock">
   <div class="loginAndAuthorization">
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -26,7 +26,8 @@
       </li>
     </ul>
     <div class="tab-pane active" id="authorized">
-      <button></button>
+      <button type="button" (click)="gotoCabinet()" class="btn btn-secondary">Cabinet</button>
+      <button type="button" (click)="logout()" class="btn btn-secondary">Logout</button>
     </div>
   </div>
 </ng-template>

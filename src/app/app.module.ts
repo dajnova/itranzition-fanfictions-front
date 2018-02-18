@@ -22,9 +22,14 @@ import {AuthenticationService} from './services/auth.service';
 import { HotFicsComponent } from './hot-fics/hot-fics.component';
 import { FindFicsComponent } from './find-fics/find-fics.component';
 import { FreshFicsComponent } from './fresh-fics/fresh-fics.component';
+import { AdminComponent } from './admin/admin.component';
+import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 
 const appRoutes: Routes = [
-  { path: '', component: MainComponent}
+  { path: '', component: MainComponent},
+  { path: 'fresh', component: FreshFicsComponent},
+  { path: 'cabinet', component: UserCabinetComponent},
+  { path: 'admin', component: AdminComponent}
 ];
 
 @NgModule({
@@ -38,7 +43,9 @@ const appRoutes: Routes = [
     RegistrationComponent,
     HotFicsComponent,
     FindFicsComponent,
-    FreshFicsComponent
+    FreshFicsComponent,
+    AdminComponent,
+    UserCabinetComponent
   ],
   imports: [
     BrowserModule,
