@@ -1,5 +1,5 @@
 {
-  "Registration": "Registration",
+  "Registration": "Register",
   "Login": "Login",
   "Creator1": "Stepan Zakrevsky",
   "Creator2": "Aleksey Slesarenko",
@@ -7,7 +7,7 @@
   "and": "and",
   "hot": "Hot fanfics",
   "fresh": "Recently updated",
-  "username":"User name",
+  "username":"Username",
   "password":"Password",
   "confirmPassword":"Confirm password",
   "Search": "Search",

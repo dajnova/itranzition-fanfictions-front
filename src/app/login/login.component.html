@@ -3,15 +3,15 @@
 <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
   <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
     <div class="ui-grid-row">
-      <h6>{{'email'| translate:user}}</h6>
+      <h6>{{'username'| translate:user}}</h6>
     </div>
     <div class="ui-grid-row">
-      <input (keyup)="saveEmail($event)" pInputText type="text" id="email" formControlName="email" placeholder="Required"/>
+      <input (keyup)="saveUsername($event)" pInputText type="text" id="username" formControlName="username" placeholder="Required"/>
     </div>
     <div class="ui-grid-row">
-      <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['email'].valid&&userform.controls['email'].dirty">
+      <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['username'].valid&&userform.controls['username'].dirty">
         <i class="fa fa-close"></i>
-        <small>Email is required</small>
+        <small>Username is required</small>
       </div>
     </div>
     <div class="ui-grid-row">
@@ -29,7 +29,7 @@
     </div>
     <div class="ui-grid-row">
       <div class="ui-grid-col-6">
-        <button pButton type="submit" class="btn btn-primary" label="Submit" [disabled]="!userform.valid">{{"Registration" | translate:user}}</button>
+        <button pButton type="submit" class="btn btn-primary" label="Submit" [disabled]="!userform.valid">{{"Login" | translate:user}}</button>
       </div>
       <div class="ui-grid-col-2">
         <a class="btn btn-social-icon btn-twitter">
