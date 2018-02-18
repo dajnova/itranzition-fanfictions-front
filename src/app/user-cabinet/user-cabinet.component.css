@@ -1,0 +1,14 @@
+app-navbar{
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+app-footer{
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: lightgreen;
+}

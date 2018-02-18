@@ -1,19 +1,21 @@
 app-navbar{
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
+  padding-bottom: 10px;
 }
 
 app-footer{
-  position: fixed;
+  position: relative;
   right: 0;
   bottom: 0;
   left: 0;
+  padding-top:100px;
   background-color: lightgreen;
 }
-
 app-authorization-form{
+  position: relative;
   background: aliceblue;
 }
 
