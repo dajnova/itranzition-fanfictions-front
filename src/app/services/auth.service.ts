@@ -9,22 +9,13 @@ export class AuthenticationService {
   constructor(private http: HttpClient, private router: Router) { }
 
   public register(user: Profile){
-    this.http.post('/api/register', user)
-      .map(data => JSON.stringify(data))
-      .subscribe(
-        data => {
-          localStorage.setItem('currentUser', JSON.parse(data));
-        }
-      );
+    return this.http.post('/api/register', user)
+      .map(data => JSON.stringify(data));
   }
+
   public login(user: Profile){
-    this.http.post('/api/login', user)
-      .map(data => JSON.stringify(data))
-      .subscribe(
-        data => {
-          localStorage.setItem('currentUser', JSON.parse(data));
-        }
-      );
+    return this.http.post('/api/login', user)
+      .map(data => JSON.stringify(data));
   }
 
   logout() {

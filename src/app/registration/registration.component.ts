@@ -43,20 +43,20 @@ export class RegistrationComponent implements OnInit {
     this.msgs = [];
     const user: Profile = {
       email: this.email,
-      name: this.username,
+      username: this.username,
       password: this.password
     };
-    this.auth.register(user);
-    if (localStorage.getItem('currentUser.emailUnique') === 'false') {
-      this.msgs.push({severity: 'error', summary: 'Error', detail: 'This email is already in use'});
-    }
-    if (localStorage.getItem('currentUser.usernameUnique') === 'false') {
-      this.msgs.push({severity: 'error', summary: 'Error', detail: 'This username is already in use'}); }
-    if (localStorage.getItem('currentUser.usernameUnique') === 'true'
-      && localStorage.getItem('currentUser.emailUnique') === 'true') {
-      this.msgs.push({severity: 'success', summary: 'Success', detail: 'Form submitted. Confirmation email has been sent'});
-      this.userform.reset();
-    }
-    localStorage.removeItem('currentUser');
+    this.auth.register(user)
+      .subscribe(
+        data => {
+          let response = JSON.parse(data);
+          if(!response.emailUnique)
+            this.msgs.push({severity: 'error', summary: 'Error', detail: 'This email is already in use'});
+          if(!response.usernameUnique)
+            this.msgs.push({severity: 'error', summary: 'Error', detail: 'This username is already in use'});
+          if(response.credentialsUnique)
+            this.msgs.push({severity: 'info', summary: 'Success', detail: 'Registration complete'});
+        }
+      );
   }
 }

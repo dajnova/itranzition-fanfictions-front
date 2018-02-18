@@ -12,7 +12,7 @@ import {Message} from 'primeng/api';
 export class LoginComponent implements OnInit {
 
   msgs: Message[] = [];
-  email: string;
+  username: string;
   password: string;
   userform: FormGroup;
 
@@ -20,12 +20,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.userform = this.fb.group({
-      'email': new FormControl('', Validators.required),
+      'username': new FormControl('', Validators.required),
       'password': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)]))
     });
   }
-  saveEmail(event: any) {
-    this.email = event.target.value;
+  saveUsername(event: any) {
+    this.username = event.target.value;
   }
 
   savePassword(event: any) {
@@ -34,11 +34,14 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     let user: Profile = {
-      email: this.email,
-      name: '',
+      email: '',
+      username: this.username,
       password: this.password,
     };
-    this.auth.login(user);
+    this.auth.login(user)
+      .subscribe((data) => localStorage.setItem('currentUser', data)
+                 (err) => this.msgs.push({severity: 'error', summary: 'Error', detail: 'Activate your account first'})
+      );
   }
 
 }
