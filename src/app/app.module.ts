@@ -20,19 +20,13 @@ import {DataListModule, OrderListModule} from 'primeng/primeng';
 import { JwtInterceptor } from './interception/jwt.interceptor';
 import {AuthenticationService} from './services/auth.service';
 import {UsersService} from './services/users.service';
-import { HotFicsComponent } from './hot-fics/hot-fics.component';
-import { FindFicsComponent } from './find-fics/find-fics.component';
-import { FreshFicsComponent } from './fresh-fics/fresh-fics.component';
-import { AdminComponent } from './admin/admin.component';
 import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 import {TabViewModule} from 'primeng/tabview';
 import {CardModule} from 'primeng/card';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
-  { path: 'fresh', component: FreshFicsComponent},
   { path: 'cabinet', component: UserCabinetComponent},
-  { path: 'admin', component: AdminComponent}
 ];
 
 @NgModule({
@@ -44,10 +38,6 @@ const appRoutes: Routes = [
     MainComponent,
     LoginComponent,
     RegistrationComponent,
-    HotFicsComponent,
-    FindFicsComponent,
-    FreshFicsComponent,
-    AdminComponent,
     UserCabinetComponent
   ],
   imports: [

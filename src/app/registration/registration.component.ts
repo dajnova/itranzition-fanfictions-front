@@ -49,13 +49,16 @@ export class RegistrationComponent implements OnInit {
     this.auth.register(user)
       .subscribe(
         data => {
-          let response = JSON.parse(data);
-          if(!response.emailUnique)
+          const response = JSON.parse(data);
+          if (!response.emailUnique) {
             this.msgs.push({severity: 'error', summary: 'Error', detail: 'This email is already in use'});
-          if(!response.usernameUnique)
+          }
+          if (!response.usernameUnique) {
             this.msgs.push({severity: 'error', summary: 'Error', detail: 'This username is already in use'});
-          if(response.credentialsUnique)
+          }
+          if (response.credentialsUnique) {
             this.msgs.push({severity: 'info', summary: 'Success', detail: 'Registration complete'});
+          }
         }
       );
   }

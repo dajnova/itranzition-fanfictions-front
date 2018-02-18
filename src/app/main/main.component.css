@@ -1,3 +1,19 @@
-p-dataList{
-
+app-navbar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
+
+app-footer{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: lightgreen;
+}
+
+app-authorization-form{
+  background: aliceblue;
+}
+
