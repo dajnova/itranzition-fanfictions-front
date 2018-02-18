@@ -19,7 +19,7 @@ export class AuthorizationFormComponent implements OnInit {
 
   isAuthorized(): boolean {
     const currentUser: any = localStorage.getItem('currentUser');
-    if (currentUser && currentUser.token) {
+    if (JSON.parse(currentUser).token != null) {
       return true;
     } else {
       return false;

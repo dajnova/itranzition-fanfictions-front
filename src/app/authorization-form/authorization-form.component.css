@@ -3,19 +3,16 @@
   border-top: 1px solid #dddddd;
 }
 
-.loginAndAuthorization
+.Authentication
 {
   position: relative;
   float: right;
-  margin-right: 2%;
+  margin-right: 1%;
   margin-top: 1%;
-  margin-left: 1%;
-  background: aliceblue;
   padding-left: 1%;
   padding-right: 1%;
   padding-bottom: 1%;
   display: grid;
-  height: 390px;
 }
 
 .authorizedWindow

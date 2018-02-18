@@ -24,6 +24,9 @@ import { FindFicsComponent } from './find-fics/find-fics.component';
 import { FreshFicsComponent } from './fresh-fics/fresh-fics.component';
 import { AdminComponent } from './admin/admin.component';
 import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
+import {TabViewModule} from 'primeng/tabview';
+import {CardModule} from 'primeng/card';
+import {PanelModule} from 'primeng/panel';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -54,6 +57,9 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
+    TabViewModule,
+    CardModule,
+    PanelModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
