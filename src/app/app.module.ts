@@ -23,6 +23,7 @@ import {UsersService} from './services/users.service';
 import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 import {TabViewModule} from 'primeng/tabview';
 import {CardModule} from 'primeng/card';
+import {InplaceModule} from 'primeng/inplace';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -59,7 +60,8 @@ const appRoutes: Routes = [
     GrowlModule,
     PanelModule,
     OrderListModule,
-    DataListModule
+    DataListModule,
+    InplaceModule
   ],
   providers: [
     MessageService,

@@ -1,2 +1,35 @@
 <app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <img src="https://www.shareicon.net/download/256x256/2016/07/10/119669_people_512x512.png">
+    </div>
+    <div class="col-4">
+      <div class="row">
+      <p-inplace closable="closable">
+        <span pInplaceDisplay>
+          <h3>{{username}}</h3>
+        </span>
+        <span pInplaceContent>
+            <input type="text" value="{{username}}" pInputText>
+        </span>
+      </p-inplace>
+      </div>
+      <div class="row">
+      <p-inplace closable="closable">
+        <span pInplaceDisplay>
+          <h3>password</h3>
+        </span>
+        <span pInplaceContent>
+            <input type="text" value="password" pInputText>
+        </span>
+      </p-inplace>
+      </div>
+    </div>
+    <div class="col-4 align-self-end">
+      <button class="btn btn-primary">Logout</button>
+    </div>
+  </div>
+
+</div>
 <app-footer></app-footer>
