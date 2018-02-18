@@ -12,4 +12,9 @@ export class UsersService {
     return this.http.get('/api/users/me');
   }
 
+  public setMe(user: Profile){
+    return this.http.post('/api/users/me', user)
+      .map(data => JSON.stringify(data));
+  }
+
 }
