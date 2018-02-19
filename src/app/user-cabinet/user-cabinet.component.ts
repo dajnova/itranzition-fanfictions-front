@@ -13,14 +13,15 @@ export class UserCabinetComponent implements OnInit {
 
   msgs: Message[] = [];
   password: string;
+  username: string;
 
   constructor(private users: UsersService) { }
 
   ngOnInit() {
   }
 
-  updateUsername(username){
-    let user: Profile = {email: '', username: username, password: ''};
+  updateUsername(){
+    let user: Profile = {email: '', username: this.username, password: ''};
     this.users.setMe(user)
       .subscribe((data) => this.msgs.push({severity: 'info', summary: 'Success', detail: 'Username updated'}),
                  (err) => this.msgs.push({severity: 'error', summary: 'Error', detail: 'This username is already in use'})
@@ -29,6 +30,14 @@ export class UserCabinetComponent implements OnInit {
 
   savePassword(event: any) {
     this.password = event.target.value;
+  }
+
+  saveUsername(event: any) {
+    this.username=event.target.value;
+  }
+
+  getUsername() {
+
   }
 
   updatePassword(){
