@@ -23,7 +23,10 @@ export class AdminComponent implements OnInit {
   }
 
   getUsersList() {
-    this.userList = this.users.getAll();
+    this.users.getAll()
+      .subscribe(data => {
+        this.userList = JSON.parse(data);
+      });
   }
 
 }

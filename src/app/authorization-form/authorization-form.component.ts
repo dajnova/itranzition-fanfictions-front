@@ -16,11 +16,11 @@ export class AuthorizationFormComponent implements OnInit {
   username: any;
 
   constructor(private auth: AuthenticationService, private users: UsersService, private http: HttpClient, private router: Router) {
+    if(this.isAuthorized())
+      this.fetchUserProfile();
   }
 
   ngOnInit() {
-    if(this.isAuthorized())
-      this.fetchUserProfile();
   }
 
   isAuthorized(): boolean {
