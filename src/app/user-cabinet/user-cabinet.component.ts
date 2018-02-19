@@ -12,6 +12,7 @@ import {Profile} from '../profile';
 export class UserCabinetComponent implements OnInit {
 
   msgs: Message[] = [];
+  password: string;
 
   constructor(private users: UsersService) { }
 
@@ -26,8 +27,12 @@ export class UserCabinetComponent implements OnInit {
       );
   }
 
-  updatePassword(password){
-    let user: Profile = {email: '', username: '', password: password};
+  savePassword(event: any) {
+    this.password = event.target.value;
+  }
+
+  updatePassword(){
+    let user: Profile = {email: '', username: '', password: this.password};
     this.users.setMe(user)
     .subscribe((data) => this.msgs.push({severity: 'info', summary: 'Success', detail: 'Password updated'}),
                (err) => this.msgs.push({severity: 'error', summary: 'Error', detail: 'Error'})

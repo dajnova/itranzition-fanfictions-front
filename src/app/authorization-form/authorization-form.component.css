@@ -32,7 +32,8 @@
 
 .nav-item
 {
-  width: 148px;
+  height: 32px;
+  width: 92px;
   float: right;
 }
 

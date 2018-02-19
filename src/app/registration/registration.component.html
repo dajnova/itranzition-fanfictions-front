@@ -2,47 +2,26 @@
 
 <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
     <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
-      <div class="ui-grid-row">
-        <h6>{{'username'| translate:user}}</h6>
+      <div class="ui-grid-row" style="margin-top:8px">
+        <span class="ui-float-label">
+          <input class="ui-state-filled" (keyup)="saveUsername($event)" pInputText type="text" id="username" formControlName="username"/>
+          <label for="float-input">{{'username'| translate:user}}</label>
+        </span>
       </div>
-      <div class="ui-grid-row">
-          <input (keyup)="saveUsername($event)" pInputText type="text" id="username" formControlName="username" placeholder="Required"/>
+      <div class="ui-grid-row" style="margin-top:20px">
+        <span class="ui-float-label">
+          <input class="ui-state-filled" (keyup)="saveEmail($event)" pInputText type="text" id="email" formControlName="email"/>
+          <label for="float-input">{{'email'| translate:user}}</label>
+        </span>
       </div>
-      <div class="ui-grid-row">
-        <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['username'].valid&&userform.controls['username'].dirty">
-          <i class="fa fa-close"></i>
-          <small>username is required</small>
-        </div>
+      <div class="ui-grid-row" style="margin-top:20px">
+        <span class="ui-float-label">
+          <input class="ui-state-filled" (keyup)="savePassword($event)" pInputText type="password" id="password" formControlName="password"/>
+          <label for="float-input">{{'password'| translate:user}}</label>
+        </span>
       </div>
-      <div class="ui-grid-row">
-        <h6>{{'email'| translate:user}}</h6>
-      </div>
-      <div class="ui-grid-row">
-          <input (keyup)="saveEmail($event)" pInputText type="text" id="email" formControlName="email" placeholder="Required"/>
-      </div>
-        <div class="ui-grid-row">
-          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['email'].valid&&userform.controls['email'].dirty">
-            <i class="fa fa-close"></i>
-            <small>Email is required</small>
-          </div>
-        </div>
-      <div class="ui-grid-row">
-        <h6>{{'password'| translate:user}}</h6>
-      </div>
-      <div class="ui-grid-row">
-          <input (keyup)="savePassword($event)" pInputText type="password" id="password" formControlName="password" placeholder="Required - Min(6)"/>
-      </div>
-      <div class="ui-grid-row">
-          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['password'].valid&&userform.controls['password'].dirty">
-            <i class="fa fa-close"></i>
-            <span *ngIf="userform.controls['password'].errors['required']"><small>Password is required</small></span>
-            <span *ngIf="userform.controls['password'].errors['minlength']"><small>Must be longer than 6 characters</small></span>
-          </div>
-      </div>
-      <div class="ui-grid-row">
-        <div class="ui-grid-col-6">
-          <button pButton type="submit" class="btn btn-primary" label="Submit" [disabled]="!userform.valid">{{"Registration" | translate:user}}</button>
-        </div>
+      <div class="ui-grid-row" style="margin-top:8px">
+          <button pButton type="submit" class="btn btn-primary" label='{{"Registration" | translate:user}}' [disabled]="!userform.valid"></button>
       </div>
     </div>
 </form>

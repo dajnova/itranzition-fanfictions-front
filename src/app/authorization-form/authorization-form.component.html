@@ -1,5 +1,5 @@
 <div *ngIf="!isAuthorized(); else elseBlock">
-  <p-panel class="Authentication ui-panel-titlebar">
+  <p-panel class="Authentication">
     <p-header>
       <ul class="nav nav-tabs">
      <li class="nav-item">
@@ -8,7 +8,7 @@
      <li class="nav-item">
        <a class="nav-link" href="#registration" data-toggle="tab">{{'Registration' | translate:user}}</a>
      </li>
-   </ul>
+      </ul>
     </p-header>
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane active" id="login">

@@ -1,3 +1,5 @@
+<p-growl [value]="msgs"></p-growl>
+
 <app-navbar></app-navbar>
 <div class="container">
   <div class="row">
@@ -16,12 +18,12 @@
       </p-inplace>
       </div>
       <div class="row">
-      <p-inplace closable="closable">
+      <p-inplace (onDeactivate)="updatePassword(password)" closable="closable">
         <span pInplaceDisplay>
           <h3>password</h3>
         </span>
         <span pInplaceContent>
-            <input type="text" value="password" pInputText>
+            <input (keyup)="savePassword($event)" type="text" value="password" pInputText>
         </span>
       </p-inplace>
       </div>

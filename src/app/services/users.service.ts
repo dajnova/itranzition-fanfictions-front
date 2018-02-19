@@ -9,7 +9,8 @@ export class UsersService {
   constructor(private http: HttpClient, private router: Router) { }
 
   public getMe(){
-    return this.http.get('/api/users/me');
+    return this.http.get('/api/users/me')
+      .map(data => JSON.stringify(data));
   }
 
   public setMe(user: Profile){

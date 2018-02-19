@@ -31,7 +31,7 @@ export class AuthorizationFormComponent implements OnInit {
   fetchUserProfile() {
     this.users.getMe()
       .subscribe(data => {
-        this.username = data.username;
+        this.username = JSON.parse(data).username;
       });
   }
 
