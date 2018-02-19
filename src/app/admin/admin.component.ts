@@ -21,6 +21,8 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['user/' + email]);
   }
 
-
+  getUsersList() {
+    this.userList = this.users.getAll();
+  }
 
 }
