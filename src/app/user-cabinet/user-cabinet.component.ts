@@ -3,6 +3,7 @@ import {UsersService} from '../services/users.service';
 import {Message, SelectItem} from 'primeng/api';
 import {Profile} from '../profile';
 import {AuthenticationService} from '../services/auth.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-user-cabinet',
@@ -14,10 +15,12 @@ export class UserCabinetComponent implements OnInit {
 
   msgs: Message[] = [];
   username: string;
+  email: string;
 
-  constructor(private users: UsersService, private auth: AuthenticationService) { }
+  constructor(private users: UsersService, private route: ActivatedRoute, private auth: AuthenticationService) { }
 
   ngOnInit() {
+    this.email = this.route.snapshot.paramMap.get('email');
   }
 
   updateUsername() {
