@@ -16,7 +16,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MessageService} from 'primeng/components/common/messageservice';
 import {GrowlModule} from 'primeng/growl';
 import {PanelModule} from 'primeng/panel';
-import {DataListModule, DataTableModule, DropdownModule, OrderListModule} from 'primeng/primeng';
+import {CheckboxModule, DataListModule, DataTableModule, DropdownModule, OrderListModule} from 'primeng/primeng';
 import { JwtInterceptor } from './interception/jwt.interceptor';
 import {AuthenticationService} from './services/auth.service';
 import {UsersService} from './services/users.service';
@@ -66,7 +66,8 @@ const appRoutes: Routes = [
     DataListModule,
     InplaceModule,
     DataTableModule,
-    DropdownModule
+    DropdownModule,
+    CheckboxModule
   ],
   providers: [
     MessageService,

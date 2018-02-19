@@ -16,13 +16,13 @@ export class UserCabinetComponent implements OnInit {
   password: string;
   username: string;
 
-  constructor(private users: UsersService, private auth:AuthenticationService) { }
+  constructor(private users: UsersService, private auth: AuthenticationService) { }
 
   ngOnInit() {
   }
 
-  updateUsername(){
-    let user: Profile = {email: '', username: this.username, password: ''};
+  updateUsername() {
+    const user: Profile = {email: '', username: this.username, password: ''};
     this.users.setMe(user)
       .subscribe((data) => this.msgs.push({severity: 'info', summary: 'Success', detail: 'Username updated'}),
                  (err) => this.msgs.push({severity: 'error', summary: 'Error', detail: 'This username is already in use'})
@@ -34,19 +34,31 @@ export class UserCabinetComponent implements OnInit {
   }
 
   saveUsername(event: any) {
-    this.username=event.target.value;
+    this.username = event.target.value;
   }
 
   getUsername() {
 
   }
 
-  logout(){
+  getFanfictions() {
+
+  }
+
+  filterByName() {
+
+  }
+
+
+  filterByGenre() {
+
+  }
+  logout() {
     this.auth.logout();
   }
 
-  updatePassword(){
-    let user: Profile = {email: '', username: '', password: this.password};
+  updatePassword() {
+    const user: Profile = {email: '', username: '', password: this.password};
     this.users.setMe(user)
     .subscribe((data) => this.msgs.push({severity: 'info', summary: 'Success', detail: 'Password updated'}),
                (err) => this.msgs.push({severity: 'error', summary: 'Error', detail: 'Error'})
