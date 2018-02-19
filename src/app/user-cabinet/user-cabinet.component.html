@@ -17,16 +17,6 @@
         </span>
       </p-inplace>
       </div>
-      <div class="row">
-      <p-inplace (onDeactivate)="updatePassword(password)" closable="closable">
-        <span pInplaceDisplay>
-          <h3>password</h3>
-        </span>
-        <span pInplaceContent>
-            <input (keyup)="savePassword($event)" type="text" value="password" pInputText>
-        </span>
-      </p-inplace>
-      </div>
     </div>
     <div class="col-4 align-self-end">
       <button class="btn btn-primary" (click)="logout()">Logout</button>
