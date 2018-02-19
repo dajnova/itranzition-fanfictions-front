@@ -16,7 +16,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MessageService} from 'primeng/components/common/messageservice';
 import {GrowlModule} from 'primeng/growl';
 import {PanelModule} from 'primeng/panel';
-import {CheckboxModule, DataListModule, DataTableModule, DropdownModule, OrderListModule} from 'primeng/primeng';
+import {CheckboxModule, DataListModule, DropdownModule, OrderListModule} from 'primeng/primeng';
 import { JwtInterceptor } from './interception/jwt.interceptor';
 import {AuthenticationService} from './services/auth.service';
 import {UsersService} from './services/users.service';
@@ -25,11 +25,13 @@ import {TabViewModule} from 'primeng/tabview';
 import {CardModule} from 'primeng/card';
 import {InplaceModule} from 'primeng/inplace';
 import { AdminComponent } from './admin/admin.component';
+import {TableModule} from 'primeng/table';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
   { path: 'cabinet', component: UserCabinetComponent},
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
+  { path: 'user/:email', component: UserCabinetComponent}
 ];
 
 @NgModule({
@@ -65,7 +67,7 @@ const appRoutes: Routes = [
     OrderListModule,
     DataListModule,
     InplaceModule,
-    DataTableModule,
+    TableModule,
     DropdownModule,
     CheckboxModule
   ],
