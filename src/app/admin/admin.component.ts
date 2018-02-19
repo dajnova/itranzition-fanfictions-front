@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
   constructor(private users: UsersService, private router: Router) { }
 
   ngOnInit() {
+    this.getUsersList();
   }
   redirectionToCabinet(email: any) {
     this.router.navigate(['user/' + email]);
