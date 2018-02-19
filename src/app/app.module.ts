@@ -24,10 +24,12 @@ import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 import {TabViewModule} from 'primeng/tabview';
 import {CardModule} from 'primeng/card';
 import {InplaceModule} from 'primeng/inplace';
+import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
   { path: 'cabinet', component: UserCabinetComponent},
+  { path: 'admin', component: AdminComponent }
 ];
 
 @NgModule({
@@ -39,7 +41,8 @@ const appRoutes: Routes = [
     MainComponent,
     LoginComponent,
     RegistrationComponent,
-    UserCabinetComponent
+    UserCabinetComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

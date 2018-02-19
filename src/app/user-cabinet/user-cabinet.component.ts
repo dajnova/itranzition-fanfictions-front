@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {UsersService} from '../services/users.service';
 import {Message, SelectItem} from 'primeng/api';
 import {Profile} from '../profile';
+import {AuthenticationService} from '../services/auth.service';
 
 @Component({
   selector: 'app-user-cabinet',
@@ -15,7 +16,7 @@ export class UserCabinetComponent implements OnInit {
   password: string;
   username: string;
 
-  constructor(private users: UsersService) { }
+  constructor(private users: UsersService, private auth:AuthenticationService) { }
 
   ngOnInit() {
   }
@@ -38,6 +39,10 @@ export class UserCabinetComponent implements OnInit {
 
   getUsername() {
 
+  }
+
+  logout(){
+    this.auth.logout();
   }
 
   updatePassword(){
