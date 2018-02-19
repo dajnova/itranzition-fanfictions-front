@@ -15,7 +15,7 @@
   display: grid;
 }
 
-.authorizedWindow
+app-user-credentials
 {
   position: relative;
   float: right;

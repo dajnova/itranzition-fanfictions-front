@@ -26,6 +26,7 @@ import {CardModule} from 'primeng/card';
 import {InplaceModule} from 'primeng/inplace';
 import { AdminComponent } from './admin/admin.component';
 import {TableModule} from 'primeng/table';
+import { UserCredentialsComponent } from './user-credentials/user-credentials.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -44,7 +45,8 @@ const appRoutes: Routes = [
     LoginComponent,
     RegistrationComponent,
     UserCabinetComponent,
-    AdminComponent
+    AdminComponent,
+    UserCredentialsComponent
   ],
   imports: [
     BrowserModule,
