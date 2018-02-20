@@ -1,41 +1,10 @@
 <p-growl [value]="msgs"></p-growl>
 <app-navbar></app-navbar>
-<div class="container">
-  <div class="row">
-    <div class="col-4">
-      <img src="https://www.shareicon.net/download/256x256/2016/07/10/119669_people_512x512.png">
-    </div>
-    <div class="col-4">
-      <div class="row">
-      <p-inplace closable="closable">
-        <span pInplaceDisplay>
-          <h3>user name</h3>
-        </span>
-        <span pInplaceContent>
-            <input (keyup)="savePassword($event)" type="text" value="{{username}}" pInputText>
-        </span>
-      </p-inplace>
-      </div>
-    </div>
-    <div class="col-4 align-self-end">
-      <button class="btn btn-primary" (click)="logout()">Logout</button>
-    </div>
+<div class="row">
+  <div class="col-md-10">
+    <app-user-fanfics></app-user-fanfics>
   </div>
-</div>
-<div class="container">
-    <button class="btn btn-success btn-block">Add new fanfic</button>
-</div>
-
-<div class="container">
-  <h1>Fanfictions list</h1>
-  <div class="row">
-    <div class="col-4">
-        <input type="text" id="namefilter" (keyup)="filterByName()" pInputText placeholder="Filter by name">
-    </div>
-    <div class="col-4 col-pull-2">
-        <input type="text" id="genrefilter" (keyup)="filterByGenre()"  pInputText placeholder="Filter by genre">
-    </div>
+  <div class="col-md-2">
+    <app-user-credentials></app-user-credentials>
   </div>
-  <div class="row"><span>&#8203;</span></div>
-
 </div>

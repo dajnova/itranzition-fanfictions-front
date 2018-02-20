@@ -5,22 +5,19 @@ app-navbar{
   right: 0;
 }
 
-app-footer{
-  position: relative;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: lightgreen;
-}
-
 .container{
-  background: aliceblue;
   margin-top: 1%;
   padding: 2%;
 }
 
-input{
-  width: 100%;
-  font-size:20px;
+app-user-credentials
+{
+  position: relative;
+  float: right;
+  margin-top: 1%;
+  margin-left: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-bottom: 1%;
+  display: grid;
 }
-

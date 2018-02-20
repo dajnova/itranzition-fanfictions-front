@@ -27,6 +27,7 @@ import { AdminComponent } from './admin/admin.component';
 import {TableModule} from 'primeng/table';
 import { UserCredentialsComponent } from './user-credentials/user-credentials.component';
 import { FreshComponent } from './fresh/fresh.component';
+import { UserFanficsComponent } from './user-fanfics/user-fanfics.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -47,7 +48,8 @@ const appRoutes: Routes = [
     UserCabinetComponent,
     AdminComponent,
     UserCredentialsComponent,
-    FreshComponent
+    FreshComponent,
+    UserFanficsComponent
   ],
   imports: [
     BrowserModule,
