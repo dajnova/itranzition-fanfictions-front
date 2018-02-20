@@ -12,9 +12,7 @@ import {MatSort, MatSortHeaderIntl, MatTableDataSource} from '@angular/material'
 })
 export class AdminComponent implements OnInit {
 
-  userList: Array<User> = [
-    {email: 'ss', username: 'ss', role: 'admin', isBlocked: true}
-  ];
+  userList: Array<User>;
   initialSelection = [];
   allowMultiSelect = true;
   columnsToDisplay = ['select', 'email', 'userName', 'role', 'IsBlocked'];

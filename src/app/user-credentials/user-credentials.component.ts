@@ -30,7 +30,7 @@ export class UserCredentialsComponent implements OnInit {
   }
 
   isAdmin() {
-    if (this.role === 'USER_ADMIN') {
+    if (this.role === 'ROLE_ADMIN') {
       return true;
     } else {
       return false;

@@ -51,6 +51,7 @@ export class UserCabinetComponent implements OnInit {
   filterByGenre() {
 
   }
+
   logout() {
     this.auth.logout();
   }

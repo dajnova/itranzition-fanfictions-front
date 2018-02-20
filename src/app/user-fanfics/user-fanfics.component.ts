@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FanfictionsService} from '../services/fanfictions.service';
+import {Fanfiction} from '../fanfiction';
 
 @Component({
   selector: 'app-user-fanfics',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserFanficsComponent implements OnInit {
 
-  constructor() { }
+  fanfictionList: Array<Fanfiction>;
+
+  constructor(private fanfictionsService: FanfictionsService) { }
 
   ngOnInit() {
+    this.fanfictionsService.getMyFanfictions()
+      .subscribe(data => {
+        this.fanfictionList = JSON.parse(data);
+      });
   }
 
 }

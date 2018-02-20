@@ -30,6 +30,7 @@ import { FreshComponent } from './fresh/fresh.component';
 import { UserFanficsComponent } from './user-fanfics/user-fanfics.component';
 import {MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule} from '@angular/material';
 import {AdminGuard} from './guard/admin.guard';
+import {FanfictionsService} from './services/fanfictions.service';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -89,7 +90,9 @@ const appRoutes: Routes = [
       multi: true
     },
     AuthenticationService,
-    UsersService
+    UsersService,
+    FanfictionsService,
+    AdminGuard
   ],
   bootstrap: [AppComponent]
 })

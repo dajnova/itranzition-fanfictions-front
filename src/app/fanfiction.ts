@@ -1,7 +1,8 @@
-export class Fanfic {
-  name: string;
-  tags: any;
+export class Fanfiction {
+  title: string;
+  description: string;
   genre: string;
+  creationDate: string;
+  tags: any;
   imageURL: string;
-  description: any;
 }

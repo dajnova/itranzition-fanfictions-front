@@ -13,7 +13,7 @@ export class AdminGuard implements CanActivate {
       .map(data => JSON.stringify(data)).subscribe(data => {
       this.role = JSON.parse(data).role;
     });
-    if(this.role === 'USER_ADMIN') {
+    if(this.role === 'ROLE_ADMIN') {
       return true;
     } else {
       return false;
