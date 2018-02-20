@@ -1,6 +1,6 @@
 <div *ngIf="!isAuthorized(); else elseBlock">
-  <div class="panel panel-primary">
-    <p-header>
+  <div class="card border-primary mb-3">
+    <div class="card-header">
       <ul class="nav nav-tabs">
      <li class="nav-item">
        <a class="nav-link active show" href="#login" data-toggle="tab">{{ 'Login' | translate:user}}</a>
@@ -9,7 +9,7 @@
        <a class="nav-link" href="#registration" data-toggle="tab">{{'Registration' | translate:user}}</a>
      </li>
       </ul>
-    </p-header>
+    </div>
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane active" id="login">
         <app-login></app-login>

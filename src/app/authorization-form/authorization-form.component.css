@@ -1,13 +1,9 @@
 .nav-tabs {
   border-bottom: transparent;
-  border-top: 1px solid #dddddd;
+  border-top: 0px solid #dddddd;
 }
 
-input {
-  width: 100%;
-}
-
-.panel
+.card
 {
   float: right;
   margin-top: 1%;
@@ -26,18 +22,4 @@ app-user-credentials
   padding-right: 1%;
   padding-bottom: 1%;
   display: grid;
-}
-
-.nav-item
-{
-  float: right;
-}
-
-#elseBlock {
-  width: 250px;
-}
-
-.li
-{
-  width: 178px;
 }

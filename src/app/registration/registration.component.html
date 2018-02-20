@@ -4,24 +4,24 @@
     <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
       <div class="ui-grid-row" style="margin-top:8px">
         <span class="ui-float-label">
-          <input class="ui-state-filled" (keyup)="saveUsername($event)" pInputText type="text" id="username" formControlName="username"/>
+          <input class="ui-state-filled form-control" (keyup)="saveUsername($event)" type="text" id="username" formControlName="username"/>
           <label for="float-input">{{'username'| translate:user}}</label>
         </span>
       </div>
       <div class="ui-grid-row" style="margin-top:20px">
         <span class="ui-float-label">
-          <input class="ui-state-filled" (keyup)="saveEmail($event)" pInputText type="text" id="email" formControlName="email"/>
+          <input class="ui-state-filled form-control" (keyup)="saveEmail($event)" type="text" id="email" formControlName="email"/>
           <label for="float-input">{{'email'| translate:user}}</label>
         </span>
       </div>
       <div class="ui-grid-row" style="margin-top:20px">
         <span class="ui-float-label">
-          <input class="ui-state-filled" (keyup)="savePassword($event)" pInputText type="password" id="password" formControlName="password"/>
+          <input class="ui-state-filled form-control" (keyup)="savePassword($event)" type="password" id="password" formControlName="password"/>
           <label for="float-input">{{'password'| translate:user}}</label>
         </span>
       </div>
       <div class="ui-grid-row" style="margin-top:8px">
-          <button pButton type="submit" class="btn btn-primary" label='{{"Registration" | translate:user}}' [disabled]="!userform.valid"></button>
+          <button type="button" class="btn btn-primary" [disabled]="!userform.valid">{{"Registration" | translate:user}}</button>
       </div>
     </div>
 </form>
