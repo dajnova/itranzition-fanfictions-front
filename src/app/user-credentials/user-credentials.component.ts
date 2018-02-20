@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 export class UserCredentialsComponent implements OnInit {
 
   username: any;
+  email: any;
 
   constructor(private auth: AuthenticationService, private users: UsersService, private http: HttpClient, private router: Router) { }
 
@@ -31,6 +32,7 @@ export class UserCredentialsComponent implements OnInit {
     this.users.getMe()
       .subscribe(data => {
         this.username = JSON.parse(data).username;
+        this.email = JSON.parse(data).email;
       });
   }
 }
