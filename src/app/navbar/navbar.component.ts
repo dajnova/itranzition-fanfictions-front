@@ -70,17 +70,4 @@ export class NavbarComponent implements OnInit {
       this.translate.use(this.browserLang);
     }
   }
-
-  isAdmin() {
-    let role;
-    this.http.get('/api/users/me')
-      .map(data => JSON.stringify(data)).subscribe(data => {
-      role = JSON.parse(data).role;
-    });
-    if (role === 'USER_ADMIN') {
-      return true;
-    } else {
-      return false;
-    }
-  }
 }
