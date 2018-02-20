@@ -14,5 +14,6 @@
   "fresh": "Свежее",
   "en": "Английский",
   "ru": "Русский",
-  "localization": "Язык"
+  "localization": "Язык",
+  "adminCabinet": "Админка"
 }

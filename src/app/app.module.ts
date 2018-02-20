@@ -26,12 +26,14 @@ import {InplaceModule} from 'primeng/inplace';
 import { AdminComponent } from './admin/admin.component';
 import {TableModule} from 'primeng/table';
 import { UserCredentialsComponent } from './user-credentials/user-credentials.component';
+import { FreshComponent } from './fresh/fresh.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
   { path: 'cabinet', component: UserCabinetComponent},
   { path: 'admin', component: AdminComponent },
-  { path: 'user/:email', component: UserCabinetComponent}
+  { path: 'user/:email', component: UserCabinetComponent},
+  { path: 'fresh', component: FreshComponent}
 ];
 
 @NgModule({
@@ -44,7 +46,8 @@ const appRoutes: Routes = [
     RegistrationComponent,
     UserCabinetComponent,
     AdminComponent,
-    UserCredentialsComponent
+    UserCredentialsComponent,
+    FreshComponent
   ],
   imports: [
     BrowserModule,
