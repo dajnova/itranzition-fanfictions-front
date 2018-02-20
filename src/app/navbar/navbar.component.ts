@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import {AuthenticationService} from '../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,7 +15,7 @@ export class NavbarComponent implements OnInit {
   public dark = 'https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/slate/bootstrap.min.css';
   public light = 'https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/sketchy/bootstrap.min.css';
 
-  constructor(private router: Router, private translate: TranslateService) {
+  constructor(private router: Router, private translate: TranslateService, private auth:AuthenticationService) {
     translate.setDefaultLang('en');
   }
   ngOnInit() {
@@ -70,6 +71,6 @@ export class NavbarComponent implements OnInit {
   }
 
   isAdmin() {
-    return false;
+    return true;
   }
 }
