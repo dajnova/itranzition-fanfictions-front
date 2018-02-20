@@ -15,7 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MessageService} from 'primeng/components/common/messageservice';
 import {GrowlModule} from 'primeng/growl';
 import {PanelModule} from 'primeng/panel';
-import {CheckboxModule, DataListModule, DropdownModule, OrderListModule} from 'primeng/primeng';
+import { DataListModule, DropdownModule, OrderListModule} from 'primeng/primeng';
 import { JwtInterceptor } from './interception/jwt.interceptor';
 import {AuthenticationService} from './services/auth.service';
 import {UsersService} from './services/users.service';
@@ -28,7 +28,7 @@ import {TableModule} from 'primeng/table';
 import { UserCredentialsComponent } from './user-credentials/user-credentials.component';
 import { FreshComponent } from './fresh/fresh.component';
 import { UserFanficsComponent } from './user-fanfics/user-fanfics.component';
-import { MatTableModule, MatPaginatorModule } from '@angular/material';
+import {MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule} from '@angular/material';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -76,7 +76,9 @@ const appRoutes: Routes = [
     TableModule,
     DropdownModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule,
+    MatCheckboxModule
   ],
   providers: [
     MessageService,

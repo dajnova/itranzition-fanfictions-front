@@ -3,21 +3,35 @@
 <div class="container">
   <h1>Users list</h1>
   <div class="row"><span>&#8203;</span></div>
-    <mat-table [dataSource]="userList">
+    <mat-table matSort="" [dataSource]="userList">
+      <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
       <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef>email</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>email</mat-header-cell>
         <mat-cell *matCellDef="let user">{{user.email}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="userName">
-        <mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Username</mat-header-cell>
         <mat-cell *matCellDef="let user">{{user.username}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="role">
-        <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Role</mat-header-cell>
         <mat-cell *matCellDef="let user">{{user.role}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="IsBlocked">
-        <mat-header-cell *matHeaderCellDef>Is blocked</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Is blocked</mat-header-cell>
         <mat-cell *matCellDef="let user">{{user.isBlocked}}</mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
