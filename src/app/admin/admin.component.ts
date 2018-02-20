@@ -12,12 +12,15 @@ export class AdminComponent implements OnInit {
 
   userList: Array<User>;
   selectedUser: User;
+  columnsToDisplay = ['email', 'userName', 'role', 'IsBlocked']
 
   constructor(private users: UsersService, private router: Router) { }
 
   ngOnInit() {
     this.getUsersList();
   }
+
+
   redirectionToCabinet(email: any) {
     this.router.navigate(['user/' + email]);
   }

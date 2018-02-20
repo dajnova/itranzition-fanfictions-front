@@ -28,6 +28,7 @@ import {TableModule} from 'primeng/table';
 import { UserCredentialsComponent } from './user-credentials/user-credentials.component';
 import { FreshComponent } from './fresh/fresh.component';
 import { UserFanficsComponent } from './user-fanfics/user-fanfics.component';
+import { MatTableModule, MatPaginatorModule } from '@angular/material';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -74,7 +75,8 @@ const appRoutes: Routes = [
     InplaceModule,
     TableModule,
     DropdownModule,
-    CheckboxModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     MessageService,

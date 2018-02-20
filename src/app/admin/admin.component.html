@@ -3,25 +3,25 @@
 <div class="container">
   <h1>Users list</h1>
   <div class="row"><span>&#8203;</span></div>
-  <div class="row">
-    <table class="table">
-      <thead>
-      <tr>
-        <th>#</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Username</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let user of userList">
-
-        <td>{{user.email}}</td>
-        <td>{{user.username}}</td>
-        <td>{{user.role}}</td>
-        <td>{{user.isBlocked}}</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
+    <mat-table [dataSource]="userList">
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>email</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{user.email}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="userName">
+        <mat-header-cell *matHeaderCellDef>Username</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{user.username}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="role">
+        <mat-header-cell *matHeaderCellDef>Role</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{user.role}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="IsBlocked">
+        <mat-header-cell *matHeaderCellDef>Is blocked</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{user.isBlocked}}</mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+      <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+    </mat-table>
+  <mat-paginator pageSize="10"></mat-paginator>
 </div>
