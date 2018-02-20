@@ -6,16 +6,15 @@ app-navbar{
   padding-bottom: 10px;
 }
 
-app-footer{
-  position: relative;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding-top:100px;
-  background-color: lightgreen;
-}
 app-authorization-form{
   position: relative;
   background: aliceblue;
 }
 
+.col-2 {
+  padding-right: 0;
+}
+
+.row {
+  margin-right: 0;
+}

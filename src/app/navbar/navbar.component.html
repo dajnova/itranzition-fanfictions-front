@@ -1,20 +1,38 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/">{{'hot' | translate:user }} <span class="sr-only">(current)</span></a>
+        <li id="theming" class="nav-item">
+          <a (click)="onChange()" class="btn btn-active">
+            <i class="fa {{ icon }} fa-lg fa-fw colored"></i>
+          </a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="/fresh">{{'fresh' | translate:user }}</a>
+        <li class="nav-item">
+          <a class="nav-link" href="#">{{'hot' | translate:user}}<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">{{'fresh' | translate:user}}</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin()">
+
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{'localization' | translate:user}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" (click)="switchLanguage('en')">{{'en' | translate:user }}</a>
+            <a class="dropdown-item" (click)="switchLanguage('ru')">{{'ru' | translate:user }}</a>
+          </div>
         </li>
       </ul>
+
       <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" placeholder="{{'searchPlaceholder' | translate:user}}" type="text">
-        <button class="btn btn-secondary my-2 my-sm-0" type="submit">{{'Search' | translate:user}}</button>
+        <input class="form-control mr-sm-2" placeholder="Search" type="text">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>
   </nav>

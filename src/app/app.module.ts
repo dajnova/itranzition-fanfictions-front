@@ -5,7 +5,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AuthorizationFormComponent } from './authorization-form/authorization-form.component';
 import { MainComponent } from './main/main.component';
@@ -38,7 +37,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
     NavbarComponent,
     AuthorizationFormComponent,
     MainComponent,

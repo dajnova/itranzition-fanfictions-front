@@ -5,11 +5,14 @@
   "Creator2": "Aleksey Slesarenko",
   "PoweredBy": "Powered By",
   "and": "and",
-  "hot": "Hot fanfics",
-  "fresh": "Recently updated",
   "username":"Username",
   "password":"Password",
   "confirmPassword":"Confirm password",
   "Search": "Search",
-  "searchPlaceholder": "Find..."
+  "searchPlaceholder": "Find...",
+  "hot": "Hot fanfics",
+  "fresh": "Recently updated",
+  "en": "English",
+  "ru": "Russian",
+  "localization": "Language"
 }

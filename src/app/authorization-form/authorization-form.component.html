@@ -1,5 +1,5 @@
 <div *ngIf="!isAuthorized(); else elseBlock">
-  <p-panel class="Authentication">
+  <div class="panel panel-primary">
     <p-header>
       <ul class="nav nav-tabs">
      <li class="nav-item">
@@ -18,7 +18,7 @@
         <app-registration></app-registration>
       </div>
     </div>
-  </p-panel>
+  </div>
 </div>
 <ng-template #elseBlock>
   <app-user-credentials></app-user-credentials>
