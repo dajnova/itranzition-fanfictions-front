@@ -3,22 +3,25 @@
 <div class="container">
   <h1>Users list</h1>
   <div class="row"><span>&#8203;</span></div>
-  <p-table [value]="userList" selectionMode="single" [(selection)]="selectedUser">
-    <ng-template pTemplate="header">
+  <div class="row">
+    <table class="table">
+      <thead>
       <tr>
-        <th>Email</th>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
         <th>Username</th>
-        <th>Is blocked</th>
-        <th>Role</th>
       </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-thisUser>
-      <tr (click)="redirectionToCabinet(thisUser.email)">
-        <td>{{thisUser.email}}</td>
-        <td>{{thisUser.username}}</td>
-        <td>{{thisUser.isBlocked}}</td>
-        <td>{{thisUser.role}}</td>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of userList">
+
+        <td>{{user.email}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.role}}</td>
+        <td>{{user.isBlocked}}</td>
       </tr>
-    </ng-template>
-  </p-table>
+      </tbody>
+    </table>
+  </div>
 </div>
