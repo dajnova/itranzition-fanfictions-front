@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {AuthenticationService} from '../services/auth.service';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,7 @@ export class NavbarComponent implements OnInit {
   public dark = 'https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/slate/bootstrap.min.css';
   public light = 'https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/sketchy/bootstrap.min.css';
 
-  constructor(private router: Router, private translate: TranslateService, private auth:AuthenticationService) {
+  constructor(private router: Router, private translate: TranslateService, private auth: AuthenticationService, private http: HttpClient) {
     translate.setDefaultLang('en');
   }
   ngOnInit() {
@@ -71,6 +72,15 @@ export class NavbarComponent implements OnInit {
   }
 
   isAdmin() {
-    return true;
+    let role;
+    this.http.get('/api/users/me')
+      .map(data => JSON.stringify(data)).subscribe(data => {
+      role = JSON.parse(data).role;
+    });
+    if (role === 'USER_ADMIN') {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

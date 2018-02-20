@@ -29,11 +29,12 @@ import { UserCredentialsComponent } from './user-credentials/user-credentials.co
 import { FreshComponent } from './fresh/fresh.component';
 import { UserFanficsComponent } from './user-fanfics/user-fanfics.component';
 import {MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule} from '@angular/material';
+import {AdminGuard} from './guard/admin.guard';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
   { path: 'cabinet', component: UserCabinetComponent},
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
   { path: 'user/:email', component: UserCabinetComponent},
   { path: 'fresh', component: FreshComponent}
 ];
