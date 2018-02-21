@@ -31,6 +31,8 @@ import { UserFanficsComponent } from './user-fanfics/user-fanfics.component';
 import {MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule} from '@angular/material';
 import {AdminGuard} from './guard/admin.guard';
 import {FanfictionsService} from './services/fanfictions.service';
+import { FanficEditComponent } from './fanfic-edit/fanfic-edit.component';
+import { ChapterEditComponent } from './chapter-edit/chapter-edit.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -52,7 +54,9 @@ const appRoutes: Routes = [
     AdminComponent,
     UserCredentialsComponent,
     FreshComponent,
-    UserFanficsComponent
+    UserFanficsComponent,
+    FanficEditComponent,
+    ChapterEditComponent
   ],
   imports: [
     BrowserModule,
