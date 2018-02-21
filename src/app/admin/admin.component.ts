@@ -37,6 +37,14 @@ export class AdminComponent implements OnInit {
       });
   }
 
+  isNotSelectedOne() {
+    return this.selection.selected.length !== 1;
+  }
+
+  isNotAnySelected() {
+    return this.selection.selected.length === 0;
+  }
+
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.userList.length;

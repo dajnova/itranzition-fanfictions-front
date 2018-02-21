@@ -35,7 +35,7 @@ import {FanfictionsService} from './services/fanfictions.service';
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
   { path: 'cabinet', component: UserCabinetComponent},
-  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
+  { path: 'admin', component: AdminComponent},
   { path: 'user/:email', component: UserCabinetComponent},
   { path: 'fresh', component: FreshComponent}
 ];
