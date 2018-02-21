@@ -33,13 +33,16 @@ import {AdminGuard} from './guard/admin.guard';
 import {FanfictionsService} from './services/fanfictions.service';
 import { FanficEditComponent } from './fanfic-edit/fanfic-edit.component';
 import { ChapterEditComponent } from './chapter-edit/chapter-edit.component';
+import {EditorModule} from 'primeng/editor';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
   { path: 'cabinet', component: UserCabinetComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'user/:email', component: UserCabinetComponent},
-  { path: 'fresh', component: FreshComponent}
+  { path: 'fresh', component: FreshComponent},
+  { path: 'edit/:id', component: FanficEditComponent},
+  { path: 'edit/:fanficid/:id', component: ChapterEditComponent}
 ];
 
 @NgModule({
@@ -84,7 +87,8 @@ const appRoutes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    EditorModule
   ],
   providers: [
     MessageService,
