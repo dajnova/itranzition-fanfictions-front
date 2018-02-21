@@ -4,6 +4,8 @@ import { User } from '../user';
 import {Router} from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import {MatSort, MatSortHeaderIntl, MatTableDataSource} from '@angular/material';
+import {forEach} from '@angular/router/src/utils/collection';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-admin',
@@ -18,17 +20,17 @@ export class AdminComponent implements OnInit {
   columnsToDisplay = ['select', 'email', 'userName', 'role', 'IsBlocked'];
   selection = new SelectionModel<User>(this.allowMultiSelect, this.initialSelection);
 
-  constructor(private users: UsersService, private router: Router, private sort: MatSortHeaderIntl) { }
+  constructor(private users: UsersService, private router: Router) { }
 
   ngOnInit() {
     this.getUsersList();
-    this.sort.sortDescriptionLabel(' ', 'asc' );
-    this.sort.sortDescriptionLabel(' ', 'desc' );
   }
 
-  redirectionToCabinet(email: any) {
-    this.router.navigate(['user/' + email]);
+  redirectionToCabinet() {
+    this.router.navigate(['user/' + this.selection.selected[0].email]);
   }
+
+
 
   getUsersList() {
     this.users.getAll()
@@ -43,6 +45,34 @@ export class AdminComponent implements OnInit {
 
   isNotAnySelected() {
     return this.selection.selected.length === 0;
+  }
+
+  getEmailList() {
+    let emailList: string[];
+    for (let i = 0, n = this.selection.selected.length; i < n; i++) {
+      emailList.push(this.selection.selected[i].email);
+    }
+    return emailList;
+  }
+
+  blockList() {
+    this.users.block(this.getEmailList());
+    this.masterToggle();
+  }
+
+  unblockList() {
+    this.users.unblock(this.getEmailList());
+    this.masterToggle();
+  }
+
+  setAdmins() {
+    this.users.setAdmins(this.getEmailList());
+    this.masterToggle();
+  }
+
+  deleteUsers() {
+    this.users.deleteUsers(this.getEmailList());
+    this.masterToggle();
   }
 
   isAllSelected() {
