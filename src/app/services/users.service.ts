@@ -14,9 +14,17 @@ export class UsersService {
       .map(data => JSON.stringify(data));
   }
 
-  public setMe(user: Profile){
-    return this.http.post('/api/users/me', user)
+  public updateMyProfile(user: Profile){
+    return this.http.post('/api/users/me/update', user)
       .map(data => JSON.stringify(data));
+  }
+
+  public updateProfiles(users: Array<User>){
+    return this.http.post('/api/users/update', users);
+  }
+
+  public deleteUsers(users: Array<User>){
+    return this.http.post('/api/users/delete', users);
   }
 
   public getAll(){

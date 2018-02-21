@@ -32,7 +32,7 @@
       </ng-container>
       <ng-container matColumnDef="IsBlocked">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Is blocked</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{user.isBlocked}}</mat-cell>
+        <mat-cell *matCellDef="let user">{{user.blocked}}</mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
       <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
@@ -43,16 +43,16 @@
       <button type="button" class="btn btn-outline-success" [disabled]="isNotSelectedOne()" (click)="redirectionToCabinet()">Go to user cabinet</button>
     </div>
     <div class="col-2">
-      <button type="button" class="btn btn-outline-warning" [disabled]="isNotAnySelected()" (click)="blockList()">Block</button>
+      <button type="button" class="btn btn-outline-warning" [disabled]="isNotAnySelected()" (click)="blockProfiles()">Block</button>
     </div>
     <div class="col-2">
-      <button type="button" class="btn btn-outline-warning" [disabled]="isNotAnySelected()" (click)="unblockList()">Unlock</button>
+      <button type="button" class="btn btn-outline-warning" [disabled]="isNotAnySelected()" (click)="unblockProfiles()">Unlock</button>
     </div>
     <div class="col-2">
       <button type="button" class="btn btn-outline-success" [disabled]="isNotAnySelected()" (click)="setAdmins()">Make admin</button>
     </div>
     <div class="col-2">
-      <button type="button" class="btn btn-outline-danger" [disabled]="isNotAnySelected()" (click)="deleteUsers()">Delete</button>
+      <button type="button" class="btn btn-outline-danger" [disabled]="isNotAnySelected()" (click)="deleteProfiles()">Delete</button>
     </div>
   </div>
 </div>

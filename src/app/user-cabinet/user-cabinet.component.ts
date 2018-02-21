@@ -25,7 +25,7 @@ export class UserCabinetComponent implements OnInit {
 
   updateUsername() {
     const user: Profile = {email: '', username: this.username, password: ''};
-    this.users.setMe(user)
+    this.users.updateMyProfile(user)
       .subscribe((data) => this.msgs.push({severity: 'info', summary: 'Success', detail: 'Username updated'}),
                  (err) => this.msgs.push({severity: 'error', summary: 'Error', detail: 'This username is already in use'})
       );

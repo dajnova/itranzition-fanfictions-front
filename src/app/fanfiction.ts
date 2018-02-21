@@ -3,6 +3,6 @@ export class Fanfiction {
   description: string;
   genre: string;
   creationDate: string;
-  tags: any;
+  tags: Array<string>;
   imageURL: string;
 }

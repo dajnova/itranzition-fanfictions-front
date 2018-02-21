@@ -1,6 +1,6 @@
 export class User {
   email: string;
   username: string;
-  isBlocked: boolean;
+  blocked: boolean;
   role: string;
 }

@@ -13,7 +13,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col-2 text-center">
-          <img style="height:134px; width:116px;" src={{fanfiction.imageURL}}>
+          <img style="height:144px; width:120px;" src={{fanfiction.imageURL}}>
         </div>
         <div class="col-10">
           <div class="d-flex w-100 justify-content-between">
@@ -22,9 +22,7 @@
           </div>
           <p class="card-subtitle mb-2 text-muted"><strong>{{fanfiction.genre}}</strong></p>
           <p class="card-text">{{fanfiction.description}}</p>
-          <div *ngFor="let tag of fanfictionList.tags">
-            <span class="badge badge-primary">{{tag}}</span>
-          </div>
+          <span *ngFor="let tag of fanfiction.tags" class="badge badge-primary">{{tag}}</span>
         </div>
       </div>
     </div>

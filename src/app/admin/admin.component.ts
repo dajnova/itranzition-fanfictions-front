@@ -30,8 +30,6 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['user/' + this.selection.selected[0].email]);
   }
 
-
-
   getUsersList() {
     this.users.getAll()
       .subscribe(data => {
@@ -47,32 +45,42 @@ export class AdminComponent implements OnInit {
     return this.selection.selected.length === 0;
   }
 
-  getEmailList() {
-    let emailList: string[];
+  updateProfiles(block: boolean, role: string) {
+    let updUserList: Array<User> = [];
     for (let i = 0, n = this.selection.selected.length; i < n; i++) {
-      emailList.push(this.selection.selected[i].email);
+      let updProfile: User = { role: role, blocked: block, email: this.selection.selected[i].email, username: null };
+      updUserList.push(updProfile);
     }
-    return emailList;
+    this.users.updateProfiles(updUserList)
+      .subscribe(data => {
+        this.getUsersList();
+        this.selection.clear();
+      });
   }
 
-  blockList() {
-    this.users.block(this.getEmailList());
-    this.masterToggle();
+  blockProfiles() {
+    this.updateProfiles(true, null);
   }
 
-  unblockList() {
-    this.users.unblock(this.getEmailList());
-    this.masterToggle();
+  unblockProfiles() {
+    this.updateProfiles(false, null);
   }
 
   setAdmins() {
-    this.users.setAdmins(this.getEmailList());
-    this.masterToggle();
+    this.updateProfiles(null, "ROLE_ADMIN");
   }
 
-  deleteUsers() {
-    this.users.deleteUsers(this.getEmailList());
-    this.masterToggle();
+  deleteProfiles() {
+    let deleteUserList: Array<User> = [];
+    for (let i = 0, n = this.selection.selected.length; i < n; i++) {
+      let deleteUser: User = { role: null, blocked: null, email: this.selection.selected[i].email, username: null };
+      deleteUserList.push(deleteUser);
+    }
+    this.users.deleteUsers(deleteUserList)
+      .subscribe(data => {
+        this.getUsersList();
+        this.selection.clear();
+      });
   }
 
   isAllSelected() {
