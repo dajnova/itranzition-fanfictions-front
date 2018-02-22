@@ -16,4 +16,20 @@ export class FanfictionsService {
     return this.http.get('/api/fanfictions/pages');
   }
 
+  getGenresList(){
+    return this.http.get('/api/tags');
+  }
+
+  getTagsList(){
+    return this.http.get('/api/genres');
+  }
+
+  getChaptersByFanficId(){
+
+  }
+
+  getFanficById(){
+
+  }
+
 }

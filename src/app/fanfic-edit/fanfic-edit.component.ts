@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Fanfiction} from '../fanfiction';
 import {Chapter} from '../chapter';
+import {HttpClient} from '@angular/common/http';
+import {FanfictionsService} from '../services/fanfictions.service';
 
 @Component({
   selector: 'app-fanfic-edit',
@@ -12,8 +14,6 @@ export class FanficEditComponent implements OnInit {
 
   fanfic: Fanfiction;
   chapters: Array<Chapter> = [];
-  tags: string[] = [];
-  genre: string;
   availableTags: string[] = [];
   availableGenres: string[] = [];
   id: any = '';
@@ -22,7 +22,7 @@ export class FanficEditComponent implements OnInit {
   visibleSidebar5: boolean;
   chapter: Chapter;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private fanficService: FanfictionsService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
@@ -36,24 +36,8 @@ export class FanficEditComponent implements OnInit {
     this.fanfic = new Fanfiction();
   }
 
-  getTagsList() {
-
-  }
-
-  getChaptersList() {
-
-  }
-
-  getGenreList() {
-
-  }
-
-  getFanficInfo() {
-
-  }
-
   addChapter() {
-    let chapter = new Chapter();
+    const chapter = new Chapter();
     chapter.title = 'New chapter';
     if (this.chapters.length) {
       chapter.id = this.chapters[this.chapters.length - 1].id + 1;
@@ -65,20 +49,12 @@ export class FanficEditComponent implements OnInit {
 
   redactChapter(id) {
     this.visibleSidebar5 = true;
-    for(var i=0;i<this.chapters.length;i++) {
-      if(this.chapters[i].id===id) {
-        this.chapter=this.chapters[i];
+    for (let i = 0; i < this.chapters.length; i++) {
+      if (this.chapters[i].id === id) {
+        this.chapter = this.chapters[i];
         break;
       }
     }
-  }
-
-  submitChapter() {
-
-  }
-
-  submitFanfic() {
-
   }
 
   filterGenre(event) {
@@ -96,7 +72,7 @@ export class FanficEditComponent implements OnInit {
     const query = event.query;
     const symbol = query.substr(query.length - 1);
     if ( symbol === ' ') {
-          this.tags.push(query);
+          this.fanfic.tags.push(query);
     } else {
       this.filteredTags = this.filterTag(query, this.availableTags);
     }
@@ -119,4 +95,29 @@ export class FanficEditComponent implements OnInit {
     }
   }
 
+  getFanficInfo() {
+
+  }
+
+  submitChapter() {
+
+  }
+
+  submitFanfic() {
+
+  }
+
+  getChaptersList() {
+
+  }
+
+  getTagsList() {
+    this.fanficService.getTagsList()
+      .subscribe(data => this.availableTags = JSON.parse(data));
+  }
+
+  getGenreList() {
+    this.fanficService.getGenresList()
+      .subscribe(data => this.availableTags = JSON.parse(data));
+  }
 }

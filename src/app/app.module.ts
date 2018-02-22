@@ -97,7 +97,8 @@ const appRoutes: Routes = [
     PaginatorModule,
     AutoCompleteModule,
     FileUploadModule,
-    SidebarModule
+    SidebarModule,
+
   ],
   providers: [
     MessageService,

@@ -73,20 +73,28 @@
 </div>
 <p-sidebar [(visible)]="visibleSidebar5" [fullScreen]="true" [baseZIndex]="10000">
   <div class="container">
-  <p-editor [(ngModel)]="this.chapter.textblock" [style]="{'height':'320px'}">
-    <p-header>
-        <span class="ql-format-group">
-            <span title="Bold" class="ql-format-button ql-bold"></span>
-            <span class="ql-format-separator"></span>
-            <span title="Italic" class="ql-format-button ql-italic"></span>
-            <span class="ql-format-separator"></span>
-            <span title="Underline" class="ql-format-button ql-underline"></span>
-            <span class="ql-format-separator"></span>
-            <span title="Strikethrough" class="ql-format-button ql-strike"></span>
-        </span>
-    </p-header>
-  </p-editor>
-  <button pButton type="button" (click)="submit()" label="Save" class="ui-button-success"></button>
-  <button pButton type="button" (click)="visibleSidebar5 = false" label="Cancel" class="ui-button-secondary"></button>
+    <div class="row">
+      <h3>Chapter title</h3>
+    </div>
+    <div class="row">
+      <input type="text" class="form-control" [(ngModel)]="this.chapter.title" placeholder="Chapter title">
+    </div>
+    <div class="row">
+      <h3>Chapter text</h3>
+    </div>
+      <p-editor [(ngModel)]="this.chapter.textblock" [style]="{'width':'100%','height':'320px'}"></p-editor>
+    <div class="row">
+      <h3>Chapter image</h3>
+    </div>
+      <p-fileUpload name="demo[]" (onUpload)="onUpload($event)" styleClass=""
+                    accept="image/*" maxFileSize="1000000">
+        <ng-template pTemplate="content">
+          <ul *ngIf="file">
+            <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+          </ul>
+        </ng-template>
+      </p-fileUpload>
+    <button pButton type="button" (click)="submit()" label="Save" class="ui-button-success"></button>
+    <button pButton type="button" (click)="visibleSidebar5 = false" label="Cancel" class="ui-button-secondary"></button>
   </div>
 </p-sidebar>
