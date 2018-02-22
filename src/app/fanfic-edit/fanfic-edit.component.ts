@@ -89,22 +89,54 @@ export class FanficEditComponent implements OnInit {
     return filtered;
   }
 
+  submit() {
+    for (let i = 0; i < this.chapters.length; i++) {
+      if (this.chapters[i].id === this.chapter.id) {
+        this.chapters[i] = this.chapter;
+        break;
+      }
+    }
+  }
+
   onUpload(event) {
     if (event) {
 
     }
   }
 
+  deleteChapter(id) {
+    for (let i = 0; i < this.chapters.length; i++) {
+      if (this.chapters[i].id === id) {
+        this.chapters.splice(i,1);
+        break;
+      }
+    }
+  }
+
+
+
   getFanficInfo() {
 
   }
 
-  submitChapter() {
-
+  submitFanfic() {
+    for (let i = 0; i < this.chapters.length ; i++) {
+      if (this.chapters[i].textblock === '') {
+        this.chapters.splice(i, 1);
+      }
+    }
+    this.fanfic.tags = this.fanfic.tags.filter(this.onlyUnique());
+    if(this.id!='') {
+      this.fanficService.updateFanfic(this.id);
+      this.fanficService.updateChapters(this.id);
+    } else {
+      this.fanficService.submitNewFanfic();
+      this.fanficService.submitChapters();
+    }
   }
 
-  submitFanfic() {
-
+  onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
   }
 
   getChaptersList() {
