@@ -3,5 +3,23 @@
 }
 
 .badge{
-  margin-right:1%;
+  margin-right: 1%;
+}
+
+.card{
+  margin-bottom: 2%;
+}
+
+#filter-sort{
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+
+#sort{
+  min-width: 210px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
 }

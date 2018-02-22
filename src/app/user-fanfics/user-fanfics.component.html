@@ -1,15 +1,32 @@
 <div class="container">
   <div class="row">
     <div class="col-9">
-      <h5 class="display-4">{{"My fanfictions" | translate:user}}</h5>
+      <h1 class="display-4">{{"My fanfictions" | translate:user}}</h1>
     </div>
-    <div class="col-3">
+    <div class="col-3 text-right">
       <button type="button" class="btn btn-outline-primary btn-lg">{{"Create fanfiction" | translate:user}}</button>
     </div>
   </div>
-  <hr class="my-4">
+  <hr class="my-1">
 
-  <div class="card" *ngFor="let fanfiction of fanfictionList">
+  <div id="filter-sort" class="row justify-content-between">
+    <div class="col-5">
+      <input name="term" [(ngModel)]="term" style="margin-top:1%" type="text" class="form-control form-control-sm" placeholder="Filter by title">
+    </div>
+    <div class="col-3"></div>
+    <div id="sort" class="col-2 text-right">
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Order by {{order}}</a>
+        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+          <a (click)="setOrder('title')" class="dropdown-item">title</a>
+          <a (click)="setOrder('genre')" class="dropdown-item">genre</a>
+          <a (click)="setOrder('creationDate')" class="dropdown-item">creation date</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" *ngFor="let fanfiction of fanfictionList | filter: term | orderBy: order:reverse:'case-insensitive'">
     <div class="card-body">
       <div class="row">
         <div class="col-2 text-center">
@@ -17,7 +34,9 @@
         </div>
         <div class="col-10">
           <div class="d-flex w-100 justify-content-between">
-            <h4 class="card-title">{{fanfiction.title}}</h4>
+            <button (click)="openFanfiction()" type="button" style="padding:0px" class="btn btn-link">
+              <h4 class="card-title">{{fanfiction.title}}</h4>
+            </button>
             <p class="text-muted">{{fanfiction.creationDate}}</p>
           </div>
           <p class="card-subtitle mb-2 text-muted"><strong>{{fanfiction.genre}}</strong></p>
@@ -31,5 +50,7 @@
       <button type="button" class="btn btn-outline-danger">Delete</button>
     </div>
   </div>
+
+  <p-paginator rows="10" totalRecords={{totalRecords}} (onPageChange)="paginate($event)"></p-paginator>
 
 </div>

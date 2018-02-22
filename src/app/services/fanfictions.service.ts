@@ -7,9 +7,13 @@ export class FanfictionsService {
 
   constructor(private http: HttpClient) { }
 
-  getMyFanfictions(){
-    return this.http.get('/api/fanfictions/my')
+  getMyFanfictions(page){
+    return this.http.get('/api/fanfictions/my?page=' + page)
       .map(data => JSON.stringify(data));
+  }
+
+  getPagesCount(){
+    return this.http.get('/api/fanfictions/pages');
   }
 
 }

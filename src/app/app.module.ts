@@ -34,6 +34,9 @@ import {FanfictionsService} from './services/fanfictions.service';
 import { FanficEditComponent } from './fanfic-edit/fanfic-edit.component';
 import { ChapterEditComponent } from './chapter-edit/chapter-edit.component';
 import {EditorModule} from 'primeng/editor';
+import { OrderModule } from 'ngx-order-pipe';
+import { FilterPipe } from './filter.pipe';
+import {PaginatorModule} from 'primeng/paginator';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -59,11 +62,13 @@ const appRoutes: Routes = [
     FreshComponent,
     UserFanficsComponent,
     FanficEditComponent,
-    ChapterEditComponent
+    ChapterEditComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    OrderModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
@@ -88,7 +93,8 @@ const appRoutes: Routes = [
     MatPaginatorModule,
     MatSortModule,
     MatCheckboxModule,
-    EditorModule
+    EditorModule,
+    PaginatorModule
   ],
   providers: [
     MessageService,
