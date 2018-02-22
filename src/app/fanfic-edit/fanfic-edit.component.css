@@ -19,8 +19,6 @@ p-autoComplete{
 }
 
 button {
-  width: 100%;
-  height: 100%;
 }
 
 input.ui-inputfield
@@ -28,4 +26,7 @@ input.ui-inputfield
   width : 100% !important;
 }
 
+#submit {
+  width:100%;
+}
 

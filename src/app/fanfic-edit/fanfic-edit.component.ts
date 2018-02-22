@@ -11,7 +11,7 @@ import {Chapter} from '../chapter';
 export class FanficEditComponent implements OnInit {
 
   fanfic: Fanfiction;
-  chapters: Array<Chapter>;
+  chapters: Array<Chapter> = [];
   tags: string[] = [];
   genre: string;
   availableTags: string[] = [];
@@ -19,16 +19,21 @@ export class FanficEditComponent implements OnInit {
   id: any = '';
   filteredTags: string[];
   filteredGenres: string[];
-
+  visibleSidebar5: boolean;
+  chapter: Chapter;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.getFanficInfo();
     this.getTagsList();
-    this.getChaptersList();
+    if (this.id !== '') {
+      this.getChaptersList();
+      this.getFanficInfo();
+    }
     this.getGenreList();
+    this.chapter = new Chapter();
+    this.fanfic = new Fanfiction();
   }
 
   getTagsList() {
@@ -48,7 +53,24 @@ export class FanficEditComponent implements OnInit {
   }
 
   addChapter() {
+    let chapter = new Chapter();
+    chapter.title = 'New chapter';
+    if (this.chapters.length) {
+      chapter.id = this.chapters[this.chapters.length - 1].id + 1;
+    } else {
+      chapter.id = 1;
+    }
+    this.chapters.push(chapter);
+  }
 
+  redactChapter(id) {
+    this.visibleSidebar5 = true;
+    for(var i=0;i<this.chapters.length;i++) {
+      if(this.chapters[i].id===id) {
+        this.chapter=this.chapters[i];
+        break;
+      }
+    }
   }
 
   submitChapter() {
@@ -70,6 +92,7 @@ export class FanficEditComponent implements OnInit {
   }
 
   filterTagsMultiple(event) {
+    this.filteredTags = [];
     const query = event.query;
     const symbol = query.substr(query.length - 1);
     if ( symbol === ' ') {
@@ -91,7 +114,7 @@ export class FanficEditComponent implements OnInit {
   }
 
   onUpload(event) {
-    if(event) {
+    if (event) {
 
     }
   }

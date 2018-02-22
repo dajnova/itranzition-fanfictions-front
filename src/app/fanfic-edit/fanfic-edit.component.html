@@ -5,9 +5,6 @@
     <div class="col-9">
       <h1 class="display-4">{{"Edit fanfic" | translate:user}}</h1>
     </div>
-    <div class="col-3">
-      <button type="button" class="btn btn-outline-primary btn-lg">{{"Submit" | translate:user}}</button>
-    </div>
   </div>
   <hr class="my-1">
   <div class="row justify-content-center">
@@ -16,31 +13,31 @@
         <h3>Fanfic title</h3>
       </div>
       <div class="row">
-        <input type="text" pInputText [(ngModel)]="name" style="width:100%" placeholder="Fanfic title">
+        <input type="text" class="form-control" [(ngModel)]="this.fanfic.title" placeholder="Fanfic title">
       </div>
       <div class="row">
         <h3>Fanfic description</h3>
       </div>
       <div class="row">
-        <input type="text" pInputText [(ngModel)]="description" style="width:100%" placeholder="Fanfic description">
+        <textarea class="form-control" [(ngModel)]="this.fanfic.description" id="exampleTextarea" rows="3"></textarea>
       </div>
       <div class="row">
         <h3>Genre</h3>
       </div>
       <div class="row">
-        <p-autoComplete [(ngModel)]="genre" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" [forceSelection]="true" placeholder="Genre" [suggestions]="availableGenres" (completeMethod)="filterGenre($event)"></p-autoComplete>
+        <p-autoComplete [(ngModel)]="this.fanfic.genre" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" [forceSelection]="true" placeholder="Genre" [suggestions]="availableGenres" (completeMethod)="filterGenre($event)"></p-autoComplete>
       </div>
       <div class="row">
         <h3>Tags</h3>
       </div>
       <div class="row">
-        <p-autoComplete [(ngModel)]="tags" [minLength]="1" [suggestions]="filteredTags" (completeMethod)="filterTagsMultiple($event)" placeholder="Tags" [multiple]="true"></p-autoComplete>
+        <p-autoComplete [(ngModel)]="this.fanfic.tags" [minLength]="1" [suggestions]="filteredTags" (completeMethod)="filterTagsMultiple($event)" placeholder="Tags" [multiple]="true"></p-autoComplete>
       </div>
       <div class="row">
         <h3>Fanfic image</h3>
       </div>
       <div class="row">
-        <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" styleClass=""
+        <p-fileUpload name="demo[]" (onUpload)="onUpload($event)" styleClass=""
                       accept="image/*" maxFileSize="1000000">
           <ng-template pTemplate="content">
             <ul *ngIf="file">
@@ -49,14 +46,47 @@
           </ng-template>
         </p-fileUpload>
       </div>
-      <mat-selection-list #shoes>
-        <mat-list-option *ngFor="let shoe of typesOfShoes">
-
-        </mat-list-option>
-      </mat-selection-list>
       <div class="row">
-      <button type="button" class="btn btn-outline-primary btn-lg">{{"Submit" | translate:user}}</button>
+        <h3>Chapters list</h3>
+      </div>
+      <button type="button" (click)="addChapter()" class="btn btn-outline-primary">Add new chapter</button>
+      <table class="table table-hover">
+        <thead>
+        <th scope="col">ID</th>
+        <th scope="col">Title</th>
+        <th scope="col">Delete</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let chapter of chapters">
+            <td>{{chapter.id}}</td>
+            <td (click)="redactChapter(chapter)">{{chapter.title}}</td>
+            <td (click)="deleteChapter(chapter.id)"><a href="">{{'delete' | translate:user}}</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <hr class="my-1">
+      <div class="row">
+      <button type="button" id="submit" class="btn btn-outline-primary btn-lg">{{"Submit" | translate:user}}</button>
       </div>
     </div>
   </div>
 </div>
+<p-sidebar [(visible)]="visibleSidebar5" [fullScreen]="true" [baseZIndex]="10000">
+  <div class="container">
+  <p-editor [(ngModel)]="this.chapter.textblock" [style]="{'height':'320px'}">
+    <p-header>
+        <span class="ql-format-group">
+            <span title="Bold" class="ql-format-button ql-bold"></span>
+            <span class="ql-format-separator"></span>
+            <span title="Italic" class="ql-format-button ql-italic"></span>
+            <span class="ql-format-separator"></span>
+            <span title="Underline" class="ql-format-button ql-underline"></span>
+            <span class="ql-format-separator"></span>
+            <span title="Strikethrough" class="ql-format-button ql-strike"></span>
+        </span>
+    </p-header>
+  </p-editor>
+  <button pButton type="button" (click)="submit()" label="Save" class="ui-button-success"></button>
+  <button pButton type="button" (click)="visibleSidebar5 = false" label="Cancel" class="ui-button-secondary"></button>
+  </div>
+</p-sidebar>

@@ -15,7 +15,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MessageService} from 'primeng/components/common/messageservice';
 import {GrowlModule} from 'primeng/growl';
 import {PanelModule} from 'primeng/panel';
-import {AutoCompleteModule, DataListModule, DropdownModule, FileUploadModule, OrderListModule} from 'primeng/primeng';
+import {AutoCompleteModule, DataListModule, DropdownModule, FileUploadModule, OrderListModule, SidebarModule} from 'primeng/primeng';
 import { JwtInterceptor } from './interception/jwt.interceptor';
 import {AuthenticationService} from './services/auth.service';
 import {UsersService} from './services/users.service';
@@ -28,7 +28,8 @@ import {TableModule} from 'primeng/table';
 import { UserCredentialsComponent } from './user-credentials/user-credentials.component';
 import { FreshComponent } from './fresh/fresh.component';
 import { UserFanficsComponent } from './user-fanfics/user-fanfics.component';
-import {MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule, MatListModule} from '@angular/material';
+import {
+  MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule} from '@angular/material';
 import {AdminGuard} from './guard/admin.guard';
 import {FanfictionsService} from './services/fanfictions.service';
 import { FanficEditComponent } from './fanfic-edit/fanfic-edit.component';
@@ -96,7 +97,7 @@ const appRoutes: Routes = [
     PaginatorModule,
     AutoCompleteModule,
     FileUploadModule,
-    MatListModule
+    SidebarModule
   ],
   providers: [
     MessageService,
