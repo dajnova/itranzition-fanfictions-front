@@ -13,3 +13,19 @@ app-navbar{
 #auth-form{
   min-width: 280px;
 }
+
+p-autoComplete{
+  width: 100%;
+}
+
+button {
+  width: 100%;
+  height: 100%;
+}
+
+input.ui-inputfield
+{
+  width : 100% !important;
+}
+
+

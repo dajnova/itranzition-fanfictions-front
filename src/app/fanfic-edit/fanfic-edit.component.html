@@ -1,3 +1,62 @@
-<p>
-  fanfic-edit works!
-</p>
+<p-growl [value]="msgs"></p-growl>
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row">
+    <div class="col-9">
+      <h1 class="display-4">{{"Edit fanfic" | translate:user}}</h1>
+    </div>
+    <div class="col-3">
+      <button type="button" class="btn btn-outline-primary btn-lg">{{"Submit" | translate:user}}</button>
+    </div>
+  </div>
+  <hr class="my-1">
+  <div class="row justify-content-center">
+    <div class="col-md-9">
+      <div class="row">
+        <h3>Fanfic title</h3>
+      </div>
+      <div class="row">
+        <input type="text" pInputText [(ngModel)]="name" style="width:100%" placeholder="Fanfic title">
+      </div>
+      <div class="row">
+        <h3>Fanfic description</h3>
+      </div>
+      <div class="row">
+        <input type="text" pInputText [(ngModel)]="description" style="width:100%" placeholder="Fanfic description">
+      </div>
+      <div class="row">
+        <h3>Genre</h3>
+      </div>
+      <div class="row">
+        <p-autoComplete [(ngModel)]="genre" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" [forceSelection]="true" placeholder="Genre" [suggestions]="availableGenres" (completeMethod)="filterGenre($event)"></p-autoComplete>
+      </div>
+      <div class="row">
+        <h3>Tags</h3>
+      </div>
+      <div class="row">
+        <p-autoComplete [(ngModel)]="tags" [minLength]="1" [suggestions]="filteredTags" (completeMethod)="filterTagsMultiple($event)" placeholder="Tags" [multiple]="true"></p-autoComplete>
+      </div>
+      <div class="row">
+        <h3>Fanfic image</h3>
+      </div>
+      <div class="row">
+        <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)" styleClass=""
+                      accept="image/*" maxFileSize="1000000">
+          <ng-template pTemplate="content">
+            <ul *ngIf="file">
+              <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+            </ul>
+          </ng-template>
+        </p-fileUpload>
+      </div>
+      <mat-selection-list #shoes>
+        <mat-list-option *ngFor="let shoe of typesOfShoes">
+
+        </mat-list-option>
+      </mat-selection-list>
+      <div class="row">
+      <button type="button" class="btn btn-outline-primary btn-lg">{{"Submit" | translate:user}}</button>
+      </div>
+    </div>
+  </div>
+</div>
