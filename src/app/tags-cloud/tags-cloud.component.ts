@@ -24,7 +24,7 @@ export class TagsCloudComponent implements OnInit {
 
   ngOnInit() {
     this.tags.getTagsList()
-      .subscribe(data => this.tagsList = JSON.parse(data));
+      .subscribe(data => this.tagsList = data);
     this.tagsList.sort(this.compare);
     for (let i = 0; i < 5; i++) {
       this.data[i] = {text: this.tagsList[i].tag, weight: this.tagsList[i].weight, link: '/tags/' + this.tagsList[i].tag, color: '#ffaaee'};
@@ -33,10 +33,10 @@ export class TagsCloudComponent implements OnInit {
 
   compare(a: tag, b: tag) {
     if (a.weight < b.weight) {
-      return -1;
+      return 1;
     }
     if (a.weight > b.weight) {
-      return 1;
+      return -1;
     }
     return 0;
   }
