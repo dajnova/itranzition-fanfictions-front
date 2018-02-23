@@ -125,8 +125,8 @@ export class FanficEditComponent implements OnInit {
         this.chapters.splice(i, 1);
       }
     }
-    this.fanfic.tags = this.fanfic.tags.filter(this.onlyUnique());
-    if(this.id!='') {
+    this.fanfic.tags = this.fanfic.tags.filter(this.onlyUnique);
+    if(this.id !== '') {
       this.fanficService.updateFanfic(this.id);
       this.fanficService.updateChapters(this.id);
     } else {

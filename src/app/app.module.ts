@@ -46,7 +46,9 @@ const appRoutes: Routes = [
   { path: 'admin', component: AdminComponent},
   { path: 'user/:email', component: UserCabinetComponent},
   { path: 'fresh', component: FreshComponent},
-  { path: 'edit/:id', component: FanficEditComponent}
+  { path: 'fanfiction/edit/:id', component: FanficEditComponent},
+  { path: 'fanfiction/edit', component: FanficEditComponent},
+  { path: 'fanfiction/edit/:email/:id', component: FanficEditComponent, guard: [AdminGuard]}
 ];
 
 @NgModule({
