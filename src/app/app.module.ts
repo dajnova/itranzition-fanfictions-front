@@ -38,6 +38,7 @@ import {EditorModule} from 'primeng/editor';
 import { OrderModule } from 'ngx-order-pipe';
 import { FilterPipe } from './filter.pipe';
 import {PaginatorModule} from 'primeng/paginator';
+import {HttpInterceptor} from './interception/HttpInterceptor';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -105,6 +106,11 @@ const appRoutes: Routes = [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptor,
       multi: true
     },
     AuthenticationService,
