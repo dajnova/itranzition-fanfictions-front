@@ -1,7 +1,7 @@
 <p-growl [value]="msgs"></p-growl>
 <app-navbar></app-navbar>
 <div class="container">
-  <h1>Users list</h1>
+  <h1>{{'users list'|translate:user}}</h1>
   <div class="row"><span>&#8203;</span></div>
     <mat-table matSort="" [dataSource]="userList">
       <ng-container matColumnDef="select">
@@ -19,19 +19,19 @@
         </mat-cell>
       </ng-container>
       <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>email</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'email'|translate:user}}</mat-header-cell>
         <mat-cell *matCellDef="let user">{{user.email}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="userName">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Username</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'username' | translate:user}}</mat-header-cell>
         <mat-cell *matCellDef="let user">{{user.username}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="role">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Role</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'role' | translate:user}}</mat-header-cell>
         <mat-cell *matCellDef="let user">{{user.role}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="IsBlocked">
-        <mat-header-cell *matHeaderCellDef mat-sort-header>Is blocked</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'isblocked' | translate:user}}</mat-header-cell>
         <mat-cell *matCellDef="let user">{{user.blocked}}</mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
@@ -40,19 +40,19 @@
   <mat-paginator pageSize="10"></mat-paginator>
     <div class="row">
     <div class="col-2">
-      <button type="button" class="btn btn-outline-success" [disabled]="isNotSelectedOne()" (click)="redirectionToCabinet()">Go to user cabinet</button>
+      <button type="button" class="btn btn-outline-success" [disabled]="isNotSelectedOne()" (click)="redirectionToCabinet()">{{'gotoUser' | translate:user}}</button>
     </div>
     <div class="col-2">
-      <button type="button" class="btn btn-outline-warning" [disabled]="isNotAnySelected()" (click)="blockProfiles()">Block</button>
+      <button type="button" class="btn btn-outline-warning" [disabled]="isNotAnySelected()" (click)="blockProfiles()">{{'block'|translate:user}}</button>
     </div>
     <div class="col-2">
-      <button type="button" class="btn btn-outline-warning" [disabled]="isNotAnySelected()" (click)="unblockProfiles()">Unlock</button>
+      <button type="button" class="btn btn-outline-warning" [disabled]="isNotAnySelected()" (click)="unblockProfiles()">{{'unblock'|translate:user}}</button>
     </div>
     <div class="col-2">
-      <button type="button" class="btn btn-outline-success" [disabled]="isNotAnySelected()" (click)="setAdmins()">Make admin</button>
+      <button type="button" class="btn btn-outline-success" [disabled]="isNotAnySelected()" (click)="setAdmins()">{{'setAdmin'|translate:user}}</button>
     </div>
     <div class="col-2">
-      <button type="button" class="btn btn-outline-danger" [disabled]="isNotAnySelected()" (click)="deleteProfiles()">Delete</button>
+      <button type="button" class="btn btn-outline-danger" [disabled]="isNotAnySelected()" (click)="deleteProfiles()">{{'delete'|translate:user}}</button>
     </div>
   </div>
 </div>

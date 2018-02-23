@@ -33,12 +33,12 @@ import {
 import {AdminGuard} from './guard/admin.guard';
 import {FanfictionsService} from './services/fanfictions.service';
 import { FanficEditComponent } from './fanfic-edit/fanfic-edit.component';
-import { ChapterEditComponent } from './chapter-edit/chapter-edit.component';
 import {EditorModule} from 'primeng/editor';
 import { OrderModule } from 'ngx-order-pipe';
 import { FilterPipe } from './filter.pipe';
 import {PaginatorModule} from 'primeng/paginator';
 import {HttpInterceptor} from './interception/HttpInterceptor';
+import { Error404Component } from './error-404/error-404.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -48,7 +48,8 @@ const appRoutes: Routes = [
   { path: 'fresh', component: FreshComponent},
   { path: 'fanfiction/edit/:id', component: FanficEditComponent},
   { path: 'fanfiction/edit', component: FanficEditComponent},
-  { path: 'fanfiction/edit/:email/:id', component: FanficEditComponent, guard: [AdminGuard]}
+  { path: 'fanfiction/edit/:email/:id', component: FanficEditComponent, canActivate: [AdminGuard]},
+  { path: '**', component: Error404Component}
 ];
 
 @NgModule({
@@ -65,8 +66,8 @@ const appRoutes: Routes = [
     FreshComponent,
     UserFanficsComponent,
     FanficEditComponent,
-    ChapterEditComponent,
-    FilterPipe
+    FilterPipe,
+    Error404Component
   ],
   imports: [
     BrowserModule,

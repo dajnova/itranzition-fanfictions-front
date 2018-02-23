@@ -17,5 +17,17 @@
   "en": "English",
   "ru": "Russian",
   "localization": "Language",
-  "adminCabinet": "Admin cabinet"
+  "adminCabinet": "Admin cabinet",
+  "users list": "Users list",
+  "gotoUser": "User cabinet",
+  "block":"Block",
+  "unblock":"Unblock",
+  "delete":"Delete",
+  "setAdmin":"Make admin",
+  "email":"Email",
+  "role":"Roled",
+  "isblocked":"Is blocked",
+  "404 description":"Requested resource not found.",
+  "404 Not found":"404 Not found",
+  "back to main":"Go to main page"
 }

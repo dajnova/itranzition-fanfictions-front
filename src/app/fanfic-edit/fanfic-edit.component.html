@@ -10,13 +10,13 @@
   <div class="row justify-content-center">
     <div class="col-md-9">
       <div class="row">
-        <h3>Fanfic title</h3>
+        <h3>{{'Fanfic title' | translate:user}}</h3>
       </div>
       <div class="row">
-        <input type="text" class="form-control" [(ngModel)]="this.fanfic.title" placeholder="Fanfic title">
+        <input type="text" class="form-control" [(ngModel)]="this.fanfic.title" placeholder="{{'Fanfic title' | translate:user}}">
       </div>
       <div class="row">
-        <h3>Fanfic description</h3>
+        <h3>{{'Fanfic description' | translate:user}}</h3>
       </div>
       <div class="row">
         <textarea class="form-control" [(ngModel)]="this.fanfic.description" id="exampleTextarea" rows="3"></textarea>
@@ -25,16 +25,16 @@
         <h3>Genre</h3>
       </div>
       <div class="row">
-        <p-autoComplete [(ngModel)]="this.fanfic.genre" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" [forceSelection]="true" placeholder="Genre" [suggestions]="availableGenres" (completeMethod)="filterGenre($event)"></p-autoComplete>
+        <p-autoComplete [(ngModel)]="this.fanfic.genre" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" [forceSelection]="true" placeholder="{{'genre' | translate:user}}" [suggestions]="availableGenres" (completeMethod)="filterGenre($event)"></p-autoComplete>
       </div>
       <div class="row">
-        <h3>Tags</h3>
+        <h3>{{'tags'|translate:user}}</h3>
       </div>
       <div class="row">
-        <p-autoComplete [(ngModel)]="this.fanfic.tags" [minLength]="1" [suggestions]="filteredTags" (completeMethod)="filterTagsMultiple($event)" placeholder="Tags" [multiple]="true"></p-autoComplete>
+        <p-autoComplete [(ngModel)]="this.fanfic.tags" [minLength]="1" [suggestions]="filteredTags" (completeMethod)="filterTagsMultiple($event)" placeholder="{{'Tags' | translate:user}}" [multiple]="true"></p-autoComplete>
       </div>
       <div class="row">
-        <h3>Fanfic image</h3>
+        <h3>{{'Fanfic image' | translate:user}}</h3>
       </div>
       <div class="row">
         <p-fileUpload name="demo[]" (onUpload)="onUpload($event)" styleClass=""
@@ -47,14 +47,14 @@
         </p-fileUpload>
       </div>
       <div class="row">
-        <h3>Chapters list</h3>
+        <h3>{{'Chapters list' | translate:user}}</h3>
       </div>
-      <button type="button" (click)="addChapter()" class="btn btn-outline-primary">Add new chapter</button>
+      <button type="button" (click)="addChapter()" class="btn btn-outline-primary">{{'Add chapter' | translate:user}}</button>
       <table class="table table-hover">
         <thead>
         <th scope="col">ID</th>
-        <th scope="col">Title</th>
-        <th scope="col">Delete</th>
+        <th scope="col">{{'titlechaptertable' | translate:user}}</th>
+        <th scope="col">{{'delete'|translate:true}}</th>
         </thead>
         <tbody>
           <tr *ngFor="let chapter of chapters">
@@ -74,17 +74,17 @@
 <p-sidebar [(visible)]="visibleSidebar5" [fullScreen]="true" [baseZIndex]="10000">
   <div class="container">
     <div class="row">
-      <h3>Chapter title</h3>
+      <h3>{{'Chapter title' | translate:user}}</h3>
     </div>
     <div class="row">
-      <input type="text" class="form-control" [(ngModel)]="this.chapter.title" placeholder="Chapter title">
+      <input type="text" class="form-control" [(ngModel)]="this.chapter.title" placeholder="{{'Chapter title' | translate:user}}">
     </div>
     <div class="row">
-      <h3>Chapter text</h3>
+      <h3>{{'Chapter text' | translate:user}}</h3>
     </div>
       <p-editor [(ngModel)]="this.chapter.textblock" [style]="{'width':'100%','height':'320px'}"></p-editor>
     <div class="row">
-      <h3>Chapter image</h3>
+      <h3>{{'Chapter image' | translate:user}}</h3>
     </div>
       <p-fileUpload name="demo[]" (onUpload)="onUpload($event)" styleClass=""
                     accept="image/*" maxFileSize="1000000">

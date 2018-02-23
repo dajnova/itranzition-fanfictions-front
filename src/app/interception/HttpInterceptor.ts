@@ -23,6 +23,9 @@ export class HttpInterceptor {
           localStorage.clear();
           this.route.navigate(['/error']);
         }
+        if(err.status === <number>404) {
+          this.route.navigate(['error/404']);
+        }
       }
     });
   }
