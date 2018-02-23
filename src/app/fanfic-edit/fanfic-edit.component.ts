@@ -26,12 +26,12 @@ export class FanficEditComponent implements OnInit {
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
-    this.getTagsList();
+    /*this.getTagsList();
     if (this.id !== '') {
       this.getChaptersList();
       this.getFanficInfo();
     }
-    this.getGenreList();
+    this.getGenreList();*/
     this.chapter = new Chapter();
     this.fanfic = new Fanfiction();
   }
@@ -104,7 +104,7 @@ export class FanficEditComponent implements OnInit {
     }
   }
 
-  deleteChapter(id) {
+  /*deleteChapter(id) {
     for (let i = 0; i < this.chapters.length; i++) {
       if (this.chapters[i].id === id) {
         this.chapters.splice(i,1);
@@ -127,7 +127,7 @@ export class FanficEditComponent implements OnInit {
     }
     this.fanfic.tags = this.fanfic.tags.filter(this.onlyUnique);
     if(this.id !== '') {
-      this.fanficService.updateFanfic(this.id);
+      /*this.fanficService.updateFanfic(this.id);
       this.fanficService.updateChapters(this.id);
     } else {
       this.fanficService.submitNewFanfic();
@@ -151,5 +151,5 @@ export class FanficEditComponent implements OnInit {
   getGenreList() {
     this.fanficService.getGenresList()
       .subscribe(data => this.availableTags = JSON.parse(data));
-  }
+  }*/
 }

@@ -39,6 +39,8 @@ import { FilterPipe } from './filter.pipe';
 import {PaginatorModule} from 'primeng/paginator';
 import {HttpInterceptor} from './interception/HttpInterceptor';
 import { Error404Component } from './error-404/error-404.component';
+import { TagsCloudComponent } from './tags-cloud/tags-cloud.component';
+import {TagCloudModule} from 'angular-tag-cloud-module';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -49,6 +51,7 @@ const appRoutes: Routes = [
   { path: 'fanfiction/edit/:id', component: FanficEditComponent},
   { path: 'fanfiction/edit', component: FanficEditComponent},
   { path: 'fanfiction/edit/:email/:id', component: FanficEditComponent, canActivate: [AdminGuard]},
+  { path: 'tag', component: TagsCloudComponent},
   { path: '**', component: Error404Component}
 ];
 
@@ -67,7 +70,8 @@ const appRoutes: Routes = [
     UserFanficsComponent,
     FanficEditComponent,
     FilterPipe,
-    Error404Component
+    Error404Component,
+    TagsCloudComponent
   ],
   imports: [
     BrowserModule,
@@ -102,18 +106,13 @@ const appRoutes: Routes = [
     AutoCompleteModule,
     FileUploadModule,
     SidebarModule,
-
+    TagCloudModule
   ],
   providers: [
     MessageService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpInterceptor,
       multi: true
     },
     AuthenticationService,
