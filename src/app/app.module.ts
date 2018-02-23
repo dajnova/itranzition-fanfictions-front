@@ -41,6 +41,7 @@ import {HttpInterceptor} from './interception/HttpInterceptor';
 import { Error404Component } from './error-404/error-404.component';
 import { TagsCloudComponent } from './tags-cloud/tags-cloud.component';
 import {TagCloudModule} from 'angular-tag-cloud-module';
+import {UserGuard} from './guard/user.guard';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -118,7 +119,8 @@ const appRoutes: Routes = [
     AuthenticationService,
     UsersService,
     FanfictionsService,
-    AdminGuard
+    AdminGuard,
+    UserGuard
   ],
   bootstrap: [AppComponent]
 })
