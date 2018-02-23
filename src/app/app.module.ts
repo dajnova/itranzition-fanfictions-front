@@ -42,6 +42,7 @@ import { Error404Component } from './error-404/error-404.component';
 import { TagsCloudComponent } from './tags-cloud/tags-cloud.component';
 import {TagCloudModule} from 'angular-tag-cloud-module';
 import {UserGuard} from './guard/user.guard';
+import { ReadComponent } from './read/read.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
   { path: 'fanfiction/edit', component: FanficEditComponent},
   { path: 'fanfiction/edit/:email/:id', component: FanficEditComponent, canActivate: [AdminGuard]},
   { path: 'tag', component: TagsCloudComponent},
+  { path: 'read/:id', component: ReadComponent},
   { path: '**', component: Error404Component}
 ];
 
@@ -72,7 +74,8 @@ const appRoutes: Routes = [
     FanficEditComponent,
     FilterPipe,
     Error404Component,
-    TagsCloudComponent
+    TagsCloudComponent,
+    ReadComponent
   ],
   imports: [
     BrowserModule,
