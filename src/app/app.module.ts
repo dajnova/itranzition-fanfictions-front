@@ -28,8 +28,7 @@ import {TableModule} from 'primeng/table';
 import { UserCredentialsComponent } from './user-credentials/user-credentials.component';
 import { FreshComponent } from './fresh/fresh.component';
 import { UserFanficsComponent } from './user-fanfics/user-fanfics.component';
-import {
-  MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule} from '@angular/material';
+import {MatTableModule, MatPaginatorModule, MatSortModule, MatCheckboxModule} from '@angular/material';
 import {AdminGuard} from './guard/admin.guard';
 import {FanfictionsService} from './services/fanfictions.service';
 import { FanficEditComponent } from './fanfic-edit/fanfic-edit.component';
@@ -39,6 +38,7 @@ import { FilterPipe } from './filter.pipe';
 import {PaginatorModule} from 'primeng/paginator';
 import {HttpInterceptor} from './interception/HttpInterceptor';
 import { Error404Component } from './error-404/error-404.component';
+import {ImageService} from './services/image.service';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -102,7 +102,6 @@ const appRoutes: Routes = [
     AutoCompleteModule,
     FileUploadModule,
     SidebarModule,
-
   ],
   providers: [
     MessageService,
@@ -119,7 +118,8 @@ const appRoutes: Routes = [
     AuthenticationService,
     UsersService,
     FanfictionsService,
-    AdminGuard
+    AdminGuard,
+    ImageService
   ],
   bootstrap: [AppComponent]
 })

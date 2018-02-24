@@ -12,8 +12,7 @@
   padding-bottom: 1%;
 }
 
-app-user-credentials
-{
+.auth{
   position: relative;
   float: left;
   max-width: 17em;

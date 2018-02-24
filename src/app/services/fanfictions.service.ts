@@ -12,24 +12,37 @@ export class FanfictionsService {
       .map(data => JSON.stringify(data));
   }
 
-  getPagesCount(){
-    return this.http.get('/api/fanfictions/pages');
-  }
-
   getGenresList(){
-    return this.http.get('/api/tags');
+    return this.http.get('/api/genres/all');
   }
 
   getTagsList(){
-    return this.http.get('/api/genres');
+    return this.http.get('/api/fanfictions/tags')
+      .map(data => JSON.stringify(data));
   }
 
-  getChaptersByFanficId(){
-
+  getFanfiction(fanfictionId, userId){
+    let url = '/api/fanfictions/get/' + fanfictionId;
+    if(userId) url += '?userId=' + userId;
+    return this.http.get(url)
+      .map(data => JSON.stringify(data));
   }
 
-  getFanficById(){
+  deleteFanfiction(fanfictionId){
+    return this.http.post('/api/fanfictions/delete/' + fanfictionId, null)
+      .map(data => JSON.stringify(data));
+  }
 
+  createFanfiction(fanfiction, email){
+    let url = '/api/fanfictions/create';
+    if(email) url += '?email=' + email;
+    return this.http.post(url, fanfiction)
+      .map(data => JSON.stringify(data));
+  }
+
+  updateFanfiction(fanfiction){
+    return this.http.post('/api/fanfictions/update', fanfiction)
+      .map(data => JSON.stringify(data));
   }
 
 }

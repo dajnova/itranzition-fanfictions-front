@@ -4,6 +4,11 @@ import {Fanfiction} from '../fanfiction';
 import {Chapter} from '../chapter';
 import {HttpClient} from '@angular/common/http';
 import {FanfictionsService} from '../services/fanfictions.service';
+import {UsersService} from '../services/users.service';
+import {ImageService} from '../services/image.service';
+import {Observable} from 'rxjs';
+import {Message, SelectItem} from 'primeng/api';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-fanfic-edit',
@@ -12,59 +17,54 @@ import {FanfictionsService} from '../services/fanfictions.service';
 })
 export class FanficEditComponent implements OnInit {
 
+  msgs: Message[] = [];
   fanfic: Fanfiction;
-  chapters: Array<Chapter> = [];
   availableTags: string[] = [];
   availableGenres: string[] = [];
-  id: any = '';
+  fanfictionId: any = '';
+  userId: any;
   filteredTags: string[];
   filteredGenres: string[];
   visibleSidebar5: boolean;
   chapter: Chapter;
 
-  constructor(private route: ActivatedRoute, private fanficService: FanfictionsService) { }
+  constructor(private route: ActivatedRoute, private fanficService: FanfictionsService,
+              private UsersService: UsersService, private imageService: ImageService, private router: Router) { }
 
   ngOnInit() {
-    this.id = this.route.snapshot.paramMap.get('id');
+    this.fanfictionId = this.route.snapshot.paramMap.get('id');
     this.getTagsList();
-    if (this.id !== '') {
-      this.getChaptersList();
-      this.getFanficInfo();
-    }
     this.getGenreList();
     this.chapter = new Chapter();
     this.fanfic = new Fanfiction();
+    this.fanfic.tags=[];
+    this.fanfic.chapters = [];
+    if (this.fanfictionId !== '') {
+      this.getFanfiction();
+    }
   }
 
   addChapter() {
     const chapter = new Chapter();
     chapter.title = 'New chapter';
-    if (this.chapters.length) {
-      chapter.id = this.chapters[this.chapters.length - 1].id + 1;
-    } else {
-      chapter.id = 1;
-    }
-    this.chapters.push(chapter);
+    chapter.id = this.fanfic.chapters.length;
+    this.fanfic.chapters.push(chapter);
   }
 
   redactChapter(id) {
     this.visibleSidebar5 = true;
-    for (let i = 0; i < this.chapters.length; i++) {
-      if (this.chapters[i].id === id) {
-        this.chapter = this.chapters[i];
+    for (let i = 0; i < this.fanfic.chapters.length; i++) {
+      if (this.fanfic.chapters[i].id === id) {
+        this.chapter = this.fanfic.chapters[i];
         break;
       }
     }
   }
 
   filterGenre(event) {
-    this.filteredGenres = [];
-    for (let i = 0; i < this.availableGenres.length; i++) {
-      const genre = this.availableGenres[i];
-      if (genre.toLowerCase().indexOf(event.query.toLowerCase()) === 0) {
-        this.filteredGenres.push(genre);
-      }
-    }
+    Observable.from(this.availableGenres)
+      .filter(s => s.includes(event.query))
+      .subscribe(s => this.filteredGenres.push(s));
   }
 
   filterTagsMultiple(event) {
@@ -90,66 +90,108 @@ export class FanficEditComponent implements OnInit {
   }
 
   submit() {
-    for (let i = 0; i < this.chapters.length; i++) {
-      if (this.chapters[i].id === this.chapter.id) {
-        this.chapters[i] = this.chapter;
+    for (let i = 0; i < this.fanfic.chapters.length; i++) {
+      if (this.fanfic.chapters[i].id === this.chapter.id) {
+        this.fanfic.chapters[i] = this.chapter;
+        this.visibleSidebar5 = false;
         break;
       }
     }
   }
 
-  onUpload(event) {
-    if (event) {
+  onRemove(event){
+    this.fanfic.imageURL = '';
+  }
 
-    }
+  onRemoveCh(event){
+    this.chapter.imageURL = '';
+  }
+
+  uploadImage(event) {
+    this.imageService.uploadImage(event.files[0])
+      .subscribe(data => {
+        this.fanfic.imageURL = JSON.parse(data).imageURL;
+        this.msgs.push({severity: 'info', summary: 'Success', detail: 'Image uploaded'});
+      });
+  }
+
+  uploadImageCh(event) {
+    this.imageService.uploadImage(event.files[0])
+      .subscribe(data => {
+        this.chapter.imageURL = JSON.parse(data).imageURL;
+        this.msgs.push({severity: 'info', summary: 'Success', detail: 'Image uploaded'});
+      });
   }
 
   deleteChapter(id) {
-    for (let i = 0; i < this.chapters.length; i++) {
-      if (this.chapters[i].id === id) {
-        this.chapters.splice(i,1);
+    for (let i = 0; i < this.fanfic.chapters.length; i++) {
+      if (this.fanfic.chapters[i].id === id) {
+        this.fanfic.chapters.splice(i,1);
         break;
       }
     }
   }
 
-
-
-  getFanficInfo() {
-
+  getFanfiction(){
+    this.UsersService.getMe()
+    .subscribe(data => {
+      this.userId = JSON.parse(data).id;
+      this.fanficService.getFanfiction(this.fanfictionId, this.userId)
+        .subscribe(data => {
+          if(JSON.parse(data)){
+            this.fanfic = JSON.parse(data);
+          } else {
+            this.fanfictionId = null;
+          }
+      });
+    });
   }
 
   submitFanfic() {
-    for (let i = 0; i < this.chapters.length ; i++) {
-      if (this.chapters[i].textblock === '') {
-        this.chapters.splice(i, 1);
+    for (let i = 0; i < this.fanfic.chapters.length ; i++) {
+      if (this.fanfic.chapters[i].textBlock === '') {
+        this.fanfic.chapters.splice(i, 1);
       }
     }
     this.fanfic.tags = this.fanfic.tags.filter(this.onlyUnique);
-    if(this.id !== '') {
-      this.fanficService.updateFanfic(this.id);
-      this.fanficService.updateChapters(this.id);
+    if(this.fanfictionId) {
+      this.fanficService.updateFanfiction(this.fanfic)
+        .subscribe(data => {
+          this.success();
+        });
     } else {
-      this.fanficService.submitNewFanfic();
-      this.fanficService.submitChapters();
+      this.fanficService.createFanfiction(this.fanfic, null)
+        .subscribe(data => {
+          this.success();
+        });
     }
+  }
+
+  success(){
+    alert("Submitted");
+    this.router.navigate(['/cabinet']);
   }
 
   onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
   }
 
-  getChaptersList() {
-
-  }
-
   getTagsList() {
     this.fanficService.getTagsList()
-      .subscribe(data => this.availableTags = JSON.parse(data));
+      .map(data => {
+        let tags = [];
+        for (let tagObj of JSON.parse(data)) {
+          tags.push(tagObj.tag);
+        }
+        return tags;
+      })
+      .subscribe(data => this.availableTags = data);
   }
 
   getGenreList() {
     this.fanficService.getGenresList()
-      .subscribe(data => this.availableTags = JSON.parse(data));
+      .subscribe((data: string[]) => {
+        this.availableGenres = data;
+      });
   }
 }

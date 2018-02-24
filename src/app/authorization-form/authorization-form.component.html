@@ -1,4 +1,5 @@
 <div *ngIf="!isAuthorized(); else elseBlock">
+  <div class="auth">
   <div class="card border-primary mb-3">
     <div class="card-header">
       <ul class="nav nav-tabs">
@@ -20,6 +21,7 @@
     </div>
   </div>
 </div>
+</div>
 <ng-template #elseBlock>
-  <app-user-credentials></app-user-credentials>
+  <app-user-credentials class="auth"></app-user-credentials>
 </ng-template>

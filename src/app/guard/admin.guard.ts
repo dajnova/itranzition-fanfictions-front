@@ -11,8 +11,8 @@ export class AdminGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     this.http.get('/api/users/me')
       .map(data => JSON.stringify(data)).subscribe(data => {
-      this.role = JSON.parse(data).role;
-    });
+        this.role = JSON.parse(data).role;
+      });
     if(this.role === 'ROLE_ADMIN') {
       return true;
     } else {

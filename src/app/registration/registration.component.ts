@@ -11,7 +11,6 @@ import {Profile} from '../profile';
 })
 export class RegistrationComponent implements OnInit {
 
-
   msgs: Message[] = [];
   email: string;
   password: string;

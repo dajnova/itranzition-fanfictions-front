@@ -48,7 +48,7 @@ export class AdminComponent implements OnInit {
   updateProfiles(block: boolean, role: string) {
     let updUserList: Array<User> = [];
     for (let i = 0, n = this.selection.selected.length; i < n; i++) {
-      let updProfile: User = { role: role, blocked: block, email: this.selection.selected[i].email, username: null };
+      let updProfile: User = { role: role, blocked: block, email: this.selection.selected[i].email, username: null, id: null };
       updUserList.push(updProfile);
     }
     this.users.updateProfiles(updUserList)
@@ -73,7 +73,7 @@ export class AdminComponent implements OnInit {
   deleteProfiles() {
     let deleteUserList: Array<User> = [];
     for (let i = 0, n = this.selection.selected.length; i < n; i++) {
-      let deleteUser: User = { role: null, blocked: null, email: this.selection.selected[i].email, username: null };
+      let deleteUser: User = { role: null, blocked: null, email: this.selection.selected[i].email, username: null, id:null };
       deleteUserList.push(deleteUser);
     }
     this.users.deleteUsers(deleteUserList)

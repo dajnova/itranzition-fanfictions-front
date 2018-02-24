@@ -20,8 +20,8 @@ export class HttpInterceptor {
     }, (err: any) => {
       if (err instanceof HttpErrorResponse) {
         if (err.status === <number>401 && err.status === <number>403) {
-          localStorage.clear();
-          this.route.navigate(['/error']);
+            localStorage.clear();
+            this.route.navigate(['/error']);
         }
         if(err.status === <number>404) {
           this.route.navigate(['error/404']);

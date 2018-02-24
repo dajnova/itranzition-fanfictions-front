@@ -4,6 +4,7 @@ import {Fanfiction} from '../fanfiction';
 import { OrderPipe } from 'ngx-order-pipe';
 import {PaginatorModule} from 'primeng/paginator';
 import {FilterPipe} from '../filter.pipe';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-fanfics',
@@ -19,24 +20,24 @@ export class UserFanficsComponent implements OnInit {
   reverse: boolean = false;
   sortedFanfictionList: Array<any>;
   totalRecords: any;
+  currentPage: number;
 
-  constructor(private fanfictionsService: FanfictionsService, private orderPipe: OrderPipe) {
+  constructor(private fanfictionsService: FanfictionsService, private orderPipe: OrderPipe, private router: Router) {
     this.sortedFanfictionList = orderPipe.transform(this.fanfictionList, 'creationDate');
-    console.log(this.sortedFanfictionList);
+    this.currentPage = 0;
   }
 
   ngOnInit() {
-    this.getFanfictions(1);
-    this.fanfictionsService.getPagesCount()
-      .subscribe(data => this.totalRecords = data);
+    this.getFanfictions(this.currentPage);
   }
 
   paginate(event) {
+    this.currentPage = event.page;
     this.getFanfictions(event.page);
   }
 
-  setOrder(value: string) {
-    if (this.order === value){
+  setOrder(value: string){
+    if (this.order === value) {
       this.reverse = !this.reverse;
     }
     this.order = value;
@@ -45,9 +46,25 @@ export class UserFanficsComponent implements OnInit {
   getFanfictions(page){
     this.fanfictionsService.getMyFanfictions(page)
       .subscribe(data => {
-        this.fanfictionList = JSON.parse(data);
+        this.fanfictionList = JSON.parse(data).fanfictions;
         window.scrollTo(0,0);
+        this.totalRecords = JSON.parse(data).totalRecords;
       });
+  }
+
+  editFanfiction(id){
+    this.router.navigate(['/fanfiction/edit/' + id]);
+  }
+
+  deleteFanfiction(id){
+    this.fanfictionsService.deleteFanfiction(id)
+      .subscribe(data => {
+        this.getFanfictions(this.currentPage);
+      });
+  }
+
+  createFanfiction(){
+    this.router.navigate(['/fanfiction/edit']);
   }
 
   openFanfiction(fanfiction: string){
