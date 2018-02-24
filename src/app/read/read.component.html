@@ -18,7 +18,7 @@
           </div>
           <p-paginator rows="1" (onPageChange)="paginate($event)" totalRecords="{{chapters.length}}"></p-paginator>
           <div *ngIf="isAuthenticated()" id="commentaries">
-            <!commentaries>
+
           </div>
         </div>
       </div>
@@ -31,13 +31,12 @@
 </div>
 <div *ngIf="isReadMode()">
   <div class="container">
-      <div *ngFor="let chapterText of chapters">
-        <h1>{{chapterText.title}}</h1>
-      </div>
-        <img style="height:0; padding-bottom:100%; width: 100%; display: block;" src="{{chapterText.imageURL}}">
-        <div innerHTML="{{chapterText.textblock}}"></div>
+    <div *ngFor="let chapterText of chapters">
+      <h1>{{chapterText.title}}</h1>
+    </div>
+      <img style="height:0; padding-bottom:100%; width: 100%; display: block;" src="{{chapterText.imageURL}}">
+      <div innerHTML="{{chapterText.textblock}}"></div>
     <p-progressBar [value]="scrollPercentage()"></p-progressBar>
-  </div>
   </div>
   <div class="col-md-2">
     <button class="btn btn-secondary" (click)="switchMode()">{{'Back to site'|translate:user}}</button>
