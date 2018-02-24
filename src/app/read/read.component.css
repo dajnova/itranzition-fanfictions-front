@@ -13,3 +13,10 @@ app-navbar{
 #auth-form{
   min-width: 280px;
 }
+
+p-progressBar{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width:100%;
+}

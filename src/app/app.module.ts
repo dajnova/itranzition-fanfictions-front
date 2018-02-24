@@ -43,6 +43,7 @@ import { TagsCloudComponent } from './tags-cloud/tags-cloud.component';
 import {TagCloudModule} from 'angular-tag-cloud-module';
 import {UserGuard} from './guard/user.guard';
 import { ReadComponent } from './read/read.component';
+import {RatingModule} from 'primeng/rating';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -75,7 +76,7 @@ const appRoutes: Routes = [
     FilterPipe,
     Error404Component,
     TagsCloudComponent,
-    ReadComponent
+    ReadComponent,
   ],
   imports: [
     BrowserModule,
@@ -110,7 +111,8 @@ const appRoutes: Routes = [
     AutoCompleteModule,
     FileUploadModule,
     SidebarModule,
-    TagCloudModule
+    TagCloudModule,
+    RatingModule
   ],
   providers: [
     MessageService,

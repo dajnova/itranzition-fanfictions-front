@@ -24,10 +24,10 @@ export class TagsCloudComponent implements OnInit {
 
   ngOnInit() {
     this.tags.getTagsList()
-      .subscribe(data => this.tagsList = data);
+      .subscribe(data => JSON.parse(this.tagsList = data));
     this.tagsList.sort(this.compare);
     for (let i = 0; i < 5; i++) {
-      this.data[i] = {text: this.tagsList[i].tag, weight: this.tagsList[i].weight, link: '/tags/' + this.tagsList[i].tag, color: '#ffaaee'};
+      this.data[i] = {text: this.tagsList[i].tag, weight: this.tagsList[i].weight, link: 'tags/' + this.tagsList[i].tag, color: '#ffaaee'};
     }
   }
 
