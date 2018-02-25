@@ -7,11 +7,10 @@ import {FanfictionsService} from '../services/fanfictions.service';
 @Component({
   selector: 'app-read',
   templateUrl: './read.component.html',
-  styleUrls: ['./read.component.css']
+  styleUrls: ['./read.component.css'],
 })
 export class ReadComponent implements OnInit {
 
-  chapters: Chapter[] = [];
   chapter: Chapter;
   // commentaries: Comments[] = [];
   // likes: Likes[]=[];
@@ -19,14 +18,24 @@ export class ReadComponent implements OnInit {
   readMode: boolean;
   fanfic: Fanfiction;
 
-  constructor(private route: ActivatedRoute, private ficService: FanfictionsService) { }
+  constructor(private route: ActivatedRoute, private fanficService: FanfictionsService) { }
 
   ngOnInit() {
+    this.chapter = new Chapter();
+    this.fanfic = new Fanfiction();
     const id = this.route.snapshot.paramMap.get('id');
     this.readMode = false;
-    //this.fanfic = this.ficService.getFanficById(id);
-    //this.chapters = this.ficService.getChaptersByFanficId(id);
-    this.chapter = this.chapters[0];
+    this.fanfic.chapters = [];
+    this.getFanfiction(id);
+  }
+
+  getFanfiction(id){
+    this.fanficService.getFanfiction(id, null)
+      .subscribe(data => {
+        this.fanfic = JSON.parse(data);
+        this.chapter = this.fanfic.chapters[0];
+        console.log(this.fanfic.chapters[0].textBlock);
+      });
   }
 
   isReadMode() {
@@ -49,7 +58,8 @@ export class ReadComponent implements OnInit {
   }
 
   paginate(event) {
-    this.chapter = this.chapters[event.page];
+    this.chapter = this.fanfic.chapters[event.page];
+    window.scrollTo(0,0);
   }
 
   scrollPercentage() {

@@ -67,8 +67,8 @@ export class UserFanficsComponent implements OnInit {
     this.router.navigate(['/fanfiction/edit']);
   }
 
-  openFanfiction(fanfiction: string){
-    //this.router.navigate(['/fanfiction/edit']);
+  openFanfiction(id){
+    this.router.navigate(['/read/' + id]);
   }
 
 }

@@ -30,11 +30,11 @@
     <div class="card-body">
       <div class="row">
         <div class="col-2 text-center">
-          <img style="height:144px; width:120px;" src={{fanfiction.imageURL}}>
+          <img style="width:144px; height:144px;" class="rounded img-fluid" src={{fanfiction.imageURL}}>
         </div>
         <div class="col-10">
           <div class="d-flex w-100 justify-content-between">
-            <button (click)="openFanfiction()" type="button" style="padding:0px" class="btn btn-link">
+            <button (click)="openFanfiction(fanfiction.id)" type="button" style="padding:0px" class="btn btn-link">
               <h4 class="card-title">{{fanfiction.title}}</h4>
             </button>
             <p class="text-muted">{{fanfiction.creationDate}}</p>

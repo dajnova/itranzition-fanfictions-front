@@ -4,38 +4,46 @@
     <div class="row justify-content-center">
       <div class="col-md-9">
         <div>
-          <h1>{{fanfic.title}}</h1>
-          <h3>{{fanfic.description}}</h3>
-          <div>
-            <p-rating></p-rating>
-          </div>
-          <div id="chapter_content">
-            <div class="card mb-3">
-              <h1 class="card-header">{{chapter.title}}</h1>
+          <div id="title" class="row" style="margin-top:16px">
+            <div class="col-10">
+              <h1 class="label">{{fanfic.title}}</h1>
             </div>
-            <img style="height: 300px; width: 100%; display: block;" src="{{chapter.imageURL}}">
-            <div class="card-body" innerHTML="{{chapter.textblock}}"></div>
+            <div class="col-2 text-right">
+              <p-rating></p-rating>
+            </div>
           </div>
-          <p-paginator rows="1" (onPageChange)="paginate($event)" totalRecords="{{chapters.length}}"></p-paginator>
+          <hr class="my-1">
+          <h5 class="label">{{fanfic.description}}</h5>
+
+          <div style="margin-top:32px">
+            <h1 class="display-3">{{chapter.title}}</h1>
+            <img style="width:100%; height:auto;" src="{{chapter.imageURL}}" class="img-fluid rounded">
+            <hr class="my-4">
+            <div innerHTML={{chapter.textBlock}}></div>
+          </div>
+
+          <p-paginator rows="1" (onPageChange)="paginate($event)" totalRecords="{{fanfic.chapters.length}}"></p-paginator>
           <div *ngIf="isAuthenticated()" id="commentaries">
 
           </div>
         </div>
       </div>
-      <div id="auth-form" class="col-md-2">
+      <div id="right-panel" class="col-md-2">
         <app-authorization-form></app-authorization-form>
-        <button class="btn btn-primary" (click)="switchMode()">{{'Switch to read mode' | translate:user}}</button>
+        <button style="float:left; max-width:18em; margin-left:4%;" class="btn btn-primary btn-block" (click)="switchMode()">
+          {{'Switch to read mode' | translate:user}}
+        </button>
       </div>
     </div>
   </div>
 </div>
 <div *ngIf="isReadMode()">
   <div class="container">
-    <div *ngFor="let chapterText of chapters">
+    <div *ngFor="let chapterText of fanfic.chapters">
       <h1>{{chapterText.title}}</h1>
+      <img style="width:100%; height:auto;" class="img-fluid rounded" src="{{chapterText.imageURL}}">
+      <div innerHTML="{{chapterText.textBlock}}"></div>
     </div>
-      <img style="height:0; padding-bottom:100%; width: 100%; display: block;" src="{{chapterText.imageURL}}">
-      <div innerHTML="{{chapterText.textblock}}"></div>
     <p-progressBar [value]="scrollPercentage()"></p-progressBar>
   </div>
   <div class="col-md-2">
