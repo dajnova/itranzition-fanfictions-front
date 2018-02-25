@@ -39,14 +39,14 @@
 </div>
 <div *ngIf="isReadMode()">
   <div class="container">
-    <div *ngFor="let chapterText of fanfic.chapters">
+    <div (scroll)="scrollPercentage()" *ngFor="let chapterText of fanfic.chapters">
       <h1>{{chapterText.title}}</h1>
       <img style="width:100%; height:auto;" class="img-fluid rounded" src="{{chapterText.imageURL}}">
       <div innerHTML="{{chapterText.textBlock}}"></div>
     </div>
-    <p-progressBar [value]="scrollPercentage()"></p-progressBar>
-  </div>
-  <div class="col-md-2">
-    <button class="btn btn-secondary" (click)="switchMode()">{{'Back to site'|translate:user}}</button>
+    <div id="controlBar">
+      <button class="btn btn-secondary" (click)="switchMode()">{{'Back to site'|translate:user}}</button>
+      <p-progressBar [value]="scrollPercentage()" [showValue]="false"></p-progressBar>
+    </div>
   </div>
 </div>

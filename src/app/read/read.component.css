@@ -8,17 +8,19 @@ app-navbar{
 .container{
   align: center;
   max-width: 1600px;
+  margin-bottom: 5%;
 }
 
 #right-panel{
   min-width: 280px;
 }
 
-p-progressBar{
+#controlBar{
   position: fixed;
   left: 0;
   bottom: 0;
   width:100%;
+  background: lightgreen;
 }
 
 .label{

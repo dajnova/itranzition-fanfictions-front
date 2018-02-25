@@ -18,6 +18,7 @@ export class ReadComponent implements OnInit {
   // ratings: Ratings[]=[];
   readMode: boolean;
   fanfic: Fanfiction;
+  value: number;
 
   constructor(private route: ActivatedRoute, private fanficService: FanfictionsService) { }
 
@@ -26,11 +27,17 @@ export class ReadComponent implements OnInit {
     this.fanfic = new Fanfiction();
     const id = this.route.snapshot.paramMap.get('id');
     this.readMode = false;
-    this.fanfic.chapters = [];
-    this.getFanfiction(id);
+    this.value=0;
+    window.addEventListener('scroll', this.scrollPercentage, true);
+    this.fanfic.chapters = [
+      <Chapter>{title: '123', textBlock: '<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>'},
+      <Chapter>{title: '123', textBlock: '<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>'},
+      <Chapter>{title: '123', textBlock: '<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>22222</p>'}
+    ];
+    //this.getFanfiction(id);
   }
 
-  getFanfiction(id){
+  getFanfiction(id) {
     this.fanficService.getFanfiction(id, null)
       .subscribe(data => {
         this.fanfic = JSON.parse(data);
@@ -60,15 +67,13 @@ export class ReadComponent implements OnInit {
 
   paginate(event) {
     this.chapter = this.fanfic.chapters[event.page];
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   }
 
   scrollPercentage() {
-    const h = document.documentElement,
-      b = document.body,
-      st = 'scrollTop',
-      sh = 'scrollHeight';
-    return (h[st] || b[st]) / ((h[sh] || b[sh]) - h.clientHeight ) * 100;
+    const s = window.scrollY;
+    const h = document.documentElement.clientHeight;
+    const c = document.documentElement.scrollHeight;
+    return (( s / (c - h)) * 100);
   }
-
 }
