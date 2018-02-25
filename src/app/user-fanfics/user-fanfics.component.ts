@@ -61,7 +61,7 @@ export class UserFanficsComponent implements OnInit {
     if (this.email === '') {
       this.router.navigate(['/fanfiction/edit/' + id]);
     } else {
-      this.router.navigate(['/fanfiction/edit'] + this.email + '/' + id);
+      this.router.navigate(['/fanfiction/edit' + this.email + '/' + id]);
     }
   }
 
