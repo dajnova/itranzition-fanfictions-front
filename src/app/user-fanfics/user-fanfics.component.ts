@@ -17,12 +17,12 @@ export class UserFanficsComponent implements OnInit {
 
   fanfictionList: Array<Fanfiction>;
 
-  order: string = 'creationDate';
-  reverse: boolean = false;
+  order = 'creationDate';
+  reverse = false;
   sortedFanfictionList: Array<any>;
   totalRecords: any;
   currentPage: number;
-  email: string = '';
+  email = '';
 
   constructor(private fanfictionsService: FanfictionsService, private orderPipe: OrderPipe,
               private router: Router, private route: ActivatedRoute) {
@@ -31,8 +31,8 @@ export class UserFanficsComponent implements OnInit {
   }
 
   ngOnInit() {
-    let email = this.route.snapshot.paramMap.get('email');
-    if(email) this.email = email;
+    const email = this.route.snapshot.paramMap.get('email');
+    if (email) { this.email = email; }
     this.getFanfictions(this.currentPage);
   }
 
@@ -41,38 +41,42 @@ export class UserFanficsComponent implements OnInit {
     this.getFanfictions(event.page);
   }
 
-  setOrder(value: string){
+  setOrder(value: string) {
     if (this.order === value) {
       this.reverse = !this.reverse;
     }
     this.order = value;
   }
 
-  getFanfictions(page){
+  getFanfictions(page) {
     this.fanfictionsService.getMyFanfictions(page, this.email)
       .subscribe(data => {
         this.fanfictionList = JSON.parse(data).fanfictions;
-        window.scrollTo(0,0);
+        window.scrollTo(0, 0);
         this.totalRecords = JSON.parse(data).totalRecords;
       });
   }
 
-  editFanfiction(id){
-    this.router.navigate(['/fanfiction/edit/' + id]);
+  editFanfiction(id) {
+    if (this.email === '') {
+      this.router.navigate(['/fanfiction/edit/' + id]);
+    } else {
+      this.router.navigate(['/fanfiction/edit'] + this.email + '/' + id);
+    }
   }
 
-  deleteFanfiction(id){
+  deleteFanfiction(id) {
     this.fanfictionsService.deleteFanfiction(id)
       .subscribe(data => {
         this.getFanfictions(this.currentPage);
       });
   }
 
-  createFanfiction(){
+  createFanfiction() {
     this.router.navigate(['/fanfiction/edit']);
   }
 
-  openFanfiction(id){
+  openFanfiction(id) {
     this.router.navigate(['/read/' + id]);
   }
 

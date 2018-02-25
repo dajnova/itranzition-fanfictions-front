@@ -35,23 +35,6 @@ export class UserCabinetComponent implements OnInit {
     this.username = event.target.value;
   }
 
-  getUsername() {
-
-  }
-
-  getFanfictions() {
-
-  }
-
-  filterByName() {
-
-  }
-
-
-  filterByGenre() {
-
-  }
-
   logout() {
     this.auth.logout();
   }

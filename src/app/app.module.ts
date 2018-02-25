@@ -48,7 +48,7 @@ import {SafeHtmlPipe} from './dom-sanitizer.pipe';
 import { MainFanficsComponent } from './main-fanfics/main-fanfics.component';
 
 const appRoutes: Routes = [
-  { path: '', component: MainComponent},
+  { path: '', redirectTo: 'hot', pathMatch: 'full'},
   { path: 'cabinet', component: UserCabinetComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'user/:email', component: UserCabinetComponent},

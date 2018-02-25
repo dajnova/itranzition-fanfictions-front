@@ -27,14 +27,9 @@ export class ReadComponent implements OnInit {
     this.fanfic = new Fanfiction();
     const id = this.route.snapshot.paramMap.get('id');
     this.readMode = false;
-    this.value=0;
+    this.value = 0;
     window.addEventListener('scroll', this.scrollPercentage, true);
-    this.fanfic.chapters = [
-      <Chapter>{title: '123', textBlock: '<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>'},
-      <Chapter>{title: '123', textBlock: '<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p>'},
-      <Chapter>{title: '123', textBlock: '<p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>1</p><p>22222</p>'}
-    ];
-    //this.getFanfiction(id);
+    this.getFanfiction(id);
   }
 
   getFanfiction(id) {
