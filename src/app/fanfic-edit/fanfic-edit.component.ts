@@ -145,23 +145,30 @@ export class FanficEditComponent implements OnInit {
     });
   }
 
+  descriptionMoreThan280(){
+    if(this.fanfic.description)
+      return this.fanfic.description.length > 280;
+    else
+      return false;
+  }
+
   submitFanfic() {
-    for (let i = 0; i < this.fanfic.chapters.length ; i++) {
-      if (this.fanfic.chapters[i].textBlock === '') {
-        this.fanfic.chapters.splice(i, 1);
+    if(!this.descriptionMoreThan280()){
+      for (let i = 0; i < this.fanfic.chapters.length ; i++) {
+        if (this.fanfic.chapters[i].textBlock === '') {
+          this.fanfic.chapters.splice(i, 1);
+        }
       }
-    }
-    this.fanfic.tags = this.fanfic.tags.filter(this.onlyUnique);
-    if(this.fanfictionId) {
-      this.fanficService.updateFanfiction(this.fanfic)
-        .subscribe(data => {
-          this.success();
-        });
-    } else {
-      this.fanficService.createFanfiction(this.fanfic, null)
-        .subscribe(data => {
-          this.success();
-        });
+      this.fanfic.tags = this.fanfic.tags.filter(this.onlyUnique);
+      if(this.fanfictionId) {
+        this.fanficService.updateFanfiction(this.fanfic)
+          .subscribe(data => {
+            this.success();
+          });
+      } else {
+        this.fanficService.createFanfiction(this.fanfic, null)
+          .subscribe(data => this.success());
+      }
     }
   }
 

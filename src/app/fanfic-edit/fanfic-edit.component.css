@@ -28,6 +28,8 @@ input.ui-inputfield
 
 .label{
   margin-top: 12px;
+  display: flex;
+  align-items: center;
 }
 
 .ui-fileupload-buttonbar button:not(.ui-fileupload-choose) {
