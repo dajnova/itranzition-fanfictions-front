@@ -111,7 +111,6 @@ export class FanficEditComponent implements OnInit {
     this.uploadsService.uploadImage(event.files[0])
       .subscribe(data => {
         this.fanfic.imageURL = JSON.parse(data).imageURL;
-        this.msgs.push({severity: 'info', summary: 'Success', detail: 'Image uploaded'});
       });
   }
 
@@ -119,7 +118,6 @@ export class FanficEditComponent implements OnInit {
     this.uploadsService.uploadImage(event.files[0])
       .subscribe(data => {
         this.chapter.imageURL = JSON.parse(data).imageURL;
-        this.msgs.push({severity: 'info', summary: 'Success', detail: 'Image uploaded'});
       });
   }
 
@@ -165,6 +163,11 @@ export class FanficEditComponent implements OnInit {
           this.success();
         });
     }
+  }
+
+  showMessage(severity, info, message){
+    this.msgs = [];
+    this.msgs.push({severity: severity, summary: info, detail: message});
   }
 
   success(){

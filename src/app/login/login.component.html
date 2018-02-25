@@ -1,6 +1,6 @@
-<p-growl [value]="msgs"></p-growl>
 
 <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
+  <p-growl [baseZIndex]="50" [value]="msgs"></p-growl>
   <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
     <div class="ui-grid-row" style="margin-top:8px">
       <span class="ui-float-label">

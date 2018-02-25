@@ -32,4 +32,8 @@ input.ui-inputfield
 
 .ui-fileupload-buttonbar button:not(.ui-fileupload-choose) {
   display: none;
-} 
+}
+
+.ui-growl-container{
+  margin-top: 50px;
+}

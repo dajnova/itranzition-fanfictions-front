@@ -1,22 +1,22 @@
-<p-growl [value]="msgs"></p-growl>
+<p-growl [sticky]="false" [life]="2000" [baseZIndex]="50" [value]="msgs"></p-growl>
 <app-navbar></app-navbar>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-9">
-      <div class="row label">
-        <h3>{{'Fanfic title' | translate:user}}</h3>
+      <div style="margin-top:24px" class="row label">
+        <h3>{{'title' | translate:user}}</h3>
       </div>
       <div class="row">
         <input type="text" class="form-control" [(ngModel)]="this.fanfic.title" placeholder="{{'Fanfic title' | translate:user}}">
       </div>
       <div class="row label">
-        <h3>{{'Fanfic description' | translate:user}}</h3>
+        <h3>{{'description' | translate:user}}</h3>
       </div>
       <div class="row">
         <textarea class="form-control" [(ngModel)]="this.fanfic.description" id="exampleTextarea" rows="3"></textarea>
       </div>
       <div class="row label">
-        <h3>Genre</h3>
+        <h3>{{'genre' | translate:user}}</h3>
       </div>
       <div class="row">
         <p-autoComplete [(ngModel)]="this.fanfic.genre" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}" [forceSelection]="true" placeholder="{{'genre' | translate:user}}" [suggestions]="availableGenres" (completeMethod)="getGenreList()"></p-autoComplete>
@@ -28,7 +28,7 @@
         <p-autoComplete [(ngModel)]="this.fanfic.tags" [minLength]="1" [suggestions]="filteredTags" (completeMethod)="filterTagsMultiple($event)" placeholder="{{'Tags' | translate:user}}" [multiple]="true"></p-autoComplete>
       </div>
       <div class="row label">
-        <h3>{{'Fanfic image' | translate:user}}</h3>
+        <h3>{{'image' | translate:user}}</h3>
       </div>
       <div class="row">
         <p-fileUpload name="files[]" accept="image/*" maxFileSize="1000000" auto="true"
@@ -41,13 +41,13 @@
         </p-fileUpload>
       </div>
       <div class="row label">
-        <h3>{{'Chapters list' | translate:user}}</h3>
+        <h3>{{'Chapters' | translate:user}}</h3>
       </div>
 
       <table style="margin-bottom:32px" class="table table-hover">
         <thead>
         <th scope="col">№</th>
-        <th scope="col">{{'titlechaptertable' | translate:user}}</th>
+        <th scope="col">{{'title' | translate:user}}</th>
         <th scope="col"></th>
         </thead>
         <tbody>
@@ -72,9 +72,6 @@
 
       <hr class="my-1">
       <div class="row justify-content-end">
-        <div class="col-2 text-right">
-          <button style="margin-bottom:16px; margin-top:16px;" type="button" class="btn btn-secondary btn-lg">{{"Cancel" | translate:user}}</button>
-        </div>
         <div class="col-3 text-right">
           <button (click)="submitFanfic()" style="margin-bottom:16px; margin-top:16px;" type="button" class="btn btn-success btn-lg btn-block">
             {{"Submit" | translate:user}}
