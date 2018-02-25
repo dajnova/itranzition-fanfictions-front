@@ -11,6 +11,7 @@
       </div>
       <div class="row label">
         <h3>{{'description' | translate:user}}</h3>
+        <h5 *ngIf="descriptionMoreThan280()" style="margin-left:16px" class="text-danger">{{'Max280' | translate:user}}</h5>
       </div>
       <div class="row">
         <textarea class="form-control" [(ngModel)]="this.fanfic.description" id="exampleTextarea" rows="3"></textarea>
@@ -73,7 +74,7 @@
       <hr class="my-1">
       <div class="row justify-content-end">
         <div class="col-3 text-right">
-          <button (click)="submitFanfic()" style="margin-bottom:16px; margin-top:16px;" type="button" class="btn btn-success btn-lg btn-block">
+          <button [disabled]="descriptionMoreThan280()" (click)="submitFanfic()" style="margin-bottom:16px; margin-top:16px;" type="button" class="btn btn-success btn-lg btn-block">
             {{"Submit" | translate:user}}
           </button>
         </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FanfictionsService} from '../services/fanfictions.service';
 import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
+import {Fanfiction} from '../fanfiction';
 
 @Component({
   selector: 'app-main-fanfics',
