@@ -3,8 +3,8 @@ import {Profile} from '../profile';
 import {AuthenticationService} from '../services/auth.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Message} from 'primeng/api';
-import { Response }  from "@angular/common/http";
 import {TranslateService} from '@ngx-translate/core';
+import { Response} from '@angular/http';
 
 @Component({
   selector: 'app-login',
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     };
     this.auth.login(user)
       .subscribe((data) => localStorage.setItem('currentUser', data),
-                 (err: Response) => {
+                 (err) => {
                    this.translate.get(err.error.message)
                       .subscribe(s => this.showMessage('error', 'Error', s))
                  }
