@@ -5,7 +5,7 @@ import {Chapter} from '../chapter';
 import {HttpClient} from '@angular/common/http';
 import {FanfictionsService} from '../services/fanfictions.service';
 import {UsersService} from '../services/users.service';
-import {ImageService} from '../services/image.service';
+import {UploadsService} from '../services/uploads.service';
 import {Observable} from 'rxjs';
 import {Message, SelectItem} from 'primeng/api';
 import {Router} from '@angular/router';
@@ -29,7 +29,7 @@ export class FanficEditComponent implements OnInit {
   chapter: Chapter;
 
   constructor(private route: ActivatedRoute, private fanficService: FanfictionsService,
-              private UsersService: UsersService, private imageService: ImageService, private router: Router) { }
+              private UsersService: UsersService, private uploadsService: UploadsService, private router: Router) { }
 
   ngOnInit() {
     this.fanfictionId = this.route.snapshot.paramMap.get('id');
@@ -108,7 +108,7 @@ export class FanficEditComponent implements OnInit {
   }
 
   uploadImage(event) {
-    this.imageService.uploadImage(event.files[0])
+    this.uploadsService.uploadImage(event.files[0])
       .subscribe(data => {
         this.fanfic.imageURL = JSON.parse(data).imageURL;
         this.msgs.push({severity: 'info', summary: 'Success', detail: 'Image uploaded'});
@@ -116,7 +116,7 @@ export class FanficEditComponent implements OnInit {
   }
 
   uploadImageCh(event) {
-    this.imageService.uploadImage(event.files[0])
+    this.uploadsService.uploadImage(event.files[0])
       .subscribe(data => {
         this.chapter.imageURL = JSON.parse(data).imageURL;
         this.msgs.push({severity: 'info', summary: 'Success', detail: 'Image uploaded'});

@@ -38,7 +38,12 @@ import { FilterPipe } from './filter.pipe';
 import {PaginatorModule} from 'primeng/paginator';
 import {HttpInterceptor} from './interception/HttpInterceptor';
 import { Error404Component } from './error-404/error-404.component';
-import {ImageService} from './services/image.service';
+import {UploadsService} from './services/uploads.service';
+import { TagsCloudComponent } from './tags-cloud/tags-cloud.component';
+import {TagCloudModule} from 'angular-tag-cloud-module';
+import {UserGuard} from './guard/user.guard';
+import { ReadComponent } from './read/read.component';
+import {RatingModule} from 'primeng/rating';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -49,6 +54,8 @@ const appRoutes: Routes = [
   { path: 'fanfiction/edit/:id', component: FanficEditComponent},
   { path: 'fanfiction/edit', component: FanficEditComponent},
   { path: 'fanfiction/edit/:email/:id', component: FanficEditComponent, canActivate: [AdminGuard]},
+  { path: 'tag', component: TagsCloudComponent},
+  { path: 'read/:id', component: ReadComponent},
   { path: '**', component: Error404Component}
 ];
 
@@ -67,7 +74,9 @@ const appRoutes: Routes = [
     UserFanficsComponent,
     FanficEditComponent,
     FilterPipe,
-    Error404Component
+    Error404Component,
+    TagsCloudComponent,
+    ReadComponent,
   ],
   imports: [
     BrowserModule,
@@ -102,6 +111,8 @@ const appRoutes: Routes = [
     AutoCompleteModule,
     FileUploadModule,
     SidebarModule,
+    TagCloudModule,
+    RatingModule
   ],
   providers: [
     MessageService,
@@ -110,16 +121,12 @@ const appRoutes: Routes = [
       useClass: JwtInterceptor,
       multi: true
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: HttpInterceptor,
-      multi: true
-    },
     AuthenticationService,
     UsersService,
     FanfictionsService,
     AdminGuard,
-    ImageService
+    UploadsService,
+    UserGuard
   ],
   bootstrap: [AppComponent]
 })

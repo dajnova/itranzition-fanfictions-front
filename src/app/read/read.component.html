@@ -1,0 +1,44 @@
+<div *ngIf="!isReadMode(); else elseBlock">
+  <app-navbar></app-navbar>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-9">
+        <div>
+          <h1>{{fanfic.title}}</h1>
+          <h3>{{fanfic.description}}</h3>
+          <div>
+            <p-rating></p-rating>
+          </div>
+          <div id="chapter_content">
+            <div class="card mb-3">
+              <h1 class="card-header">{{chapter.title}}</h1>
+            </div>
+            <img style="height: 300px; width: 100%; display: block;" src="{{chapter.imageURL}}">
+            <div class="card-body" innerHTML="{{chapter.textblock}}"></div>
+          </div>
+          <p-paginator rows="1" (onPageChange)="paginate($event)" totalRecords="{{chapters.length}}"></p-paginator>
+          <div *ngIf="isAuthenticated()" id="commentaries">
+
+          </div>
+        </div>
+      </div>
+      <div id="auth-form" class="col-md-2">
+        <app-authorization-form></app-authorization-form>
+        <button class="btn btn-primary" (click)="switchMode()">{{'Switch to read mode' | translate:user}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isReadMode()">
+  <div class="container">
+    <div *ngFor="let chapterText of chapters">
+      <h1>{{chapterText.title}}</h1>
+    </div>
+      <img style="height:0; padding-bottom:100%; width: 100%; display: block;" src="{{chapterText.imageURL}}">
+      <div innerHTML="{{chapterText.textblock}}"></div>
+    <p-progressBar [value]="scrollPercentage()"></p-progressBar>
+  </div>
+  <div class="col-md-2">
+    <button class="btn btn-secondary" (click)="switchMode()">{{'Back to site'|translate:user}}</button>
+  </div>
+</div>

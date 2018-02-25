@@ -29,5 +29,8 @@
   "isblocked":"Is blocked",
   "404 description":"Requested resource not found.",
   "404 Not found":"404 Not found",
-  "back to main":"Go to main page"
+  "back to main":"Go to main page",
+  "genre":"Genre",
+  "tags":"Tags",
+  "titlechaptertable":"Title"
 }
