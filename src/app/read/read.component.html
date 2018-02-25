@@ -19,7 +19,7 @@
             <h1 class="display-3">{{chapter.title}}</h1>
             <img style="width:100%; height:auto;" src="{{chapter.imageURL}}" class="img-fluid rounded">
             <hr class="my-4">
-            <div innerHTML={{chapter.textBlock}}></div>
+            <div [innerHTML]="chapter.textBlock | safeHtml"></div>
           </div>
 
           <p-paginator rows="1" (onPageChange)="paginate($event)" totalRecords="{{fanfic.chapters.length}}"></p-paginator>

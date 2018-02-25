@@ -3,6 +3,7 @@ import {Chapter} from '../chapter';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Fanfiction} from '../fanfiction';
 import {FanfictionsService} from '../services/fanfictions.service';
+import {SafeHtmlPipe} from '../dom-sanitizer.pipe';
 
 @Component({
   selector: 'app-read',
