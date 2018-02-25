@@ -5,6 +5,7 @@ import { OrderPipe } from 'ngx-order-pipe';
 import {PaginatorModule} from 'primeng/paginator';
 import {FilterPipe} from '../filter.pipe';
 import {Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-user-fanfics',
@@ -21,13 +22,17 @@ export class UserFanficsComponent implements OnInit {
   sortedFanfictionList: Array<any>;
   totalRecords: any;
   currentPage: number;
+  email: string = '';
 
-  constructor(private fanfictionsService: FanfictionsService, private orderPipe: OrderPipe, private router: Router) {
+  constructor(private fanfictionsService: FanfictionsService, private orderPipe: OrderPipe,
+              private router: Router, private route: ActivatedRoute) {
     this.sortedFanfictionList = orderPipe.transform(this.fanfictionList, 'creationDate');
     this.currentPage = 0;
   }
 
   ngOnInit() {
+    let email = this.route.snapshot.paramMap.get('email');
+    if(email) this.email = email;
     this.getFanfictions(this.currentPage);
   }
 
@@ -44,7 +49,7 @@ export class UserFanficsComponent implements OnInit {
   }
 
   getFanfictions(page){
-    this.fanfictionsService.getMyFanfictions(page)
+    this.fanfictionsService.getMyFanfictions(page, this.email)
       .subscribe(data => {
         this.fanfictionList = JSON.parse(data).fanfictions;
         window.scrollTo(0,0);

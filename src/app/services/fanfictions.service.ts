@@ -7,8 +7,10 @@ export class FanfictionsService {
 
   constructor(private http: HttpClient) { }
 
-  getMyFanfictions(page){
-    return this.http.get('/api/fanfictions/my?page=' + page)
+  getMyFanfictions(page, email){
+    let url = '/api/fanfictions/my?page=' + page;
+    if(email) url += '&email=' + email;
+    return this.http.get(url)
       .map(data => JSON.stringify(data));
   }
 
@@ -21,9 +23,9 @@ export class FanfictionsService {
       .map(data => JSON.stringify(data));
   }
 
-  getFanfiction(fanfictionId, userId){
+  getFanfiction(fanfictionId, userEmail){
     let url = '/api/fanfictions/get/' + fanfictionId;
-    if(userId) url += '?userId=' + userId;
+    if(userEmail) url += '?email=' + userEmail;
     return this.http.get(url)
       .map(data => JSON.stringify(data));
   }

@@ -22,7 +22,7 @@ export class FanficEditComponent implements OnInit {
   availableTags: string[] = [];
   availableGenres: string[] = [];
   fanfictionId: any = '';
-  userId: any;
+  userEmail: any;
   filteredTags: string[];
   filteredGenres: string[];
   visibleSidebar5: boolean;
@@ -133,8 +133,8 @@ export class FanficEditComponent implements OnInit {
   getFanfiction(){
     this.UsersService.getMe()
     .subscribe(data => {
-      this.userId = JSON.parse(data).id;
-      this.fanficService.getFanfiction(this.fanfictionId, this.userId)
+      this.userEmail = JSON.parse(data).email;
+      this.fanficService.getFanfiction(this.fanfictionId, this.userEmail)
         .subscribe(data => {
           if(JSON.parse(data)){
             this.fanfic = JSON.parse(data);
