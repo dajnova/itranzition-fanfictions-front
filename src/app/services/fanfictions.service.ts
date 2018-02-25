@@ -47,4 +47,9 @@ export class FanfictionsService {
       .map(data => JSON.stringify(data));
   }
 
+  getAllFanfictions(page, order){
+    return this.http.get('/api/fanfictions' + order + '?page=' + page)
+      .map(data => JSON.stringify(data));
+  }
+
 }

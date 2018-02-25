@@ -1,0 +1,26 @@
+<div class="container">
+
+<div class="card" *ngFor="let fanfiction of fanfictions">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-2 text-center">
+        <img style="width:144px; height:144px;" class="rounded img-fluid" src={{fanfiction.imageURL}}>
+      </div>
+      <div class="col-10">
+        <div class="d-flex w-100 justify-content-between">
+          <button (click)="openFanfiction(fanfiction.id)" type="button" style="padding:0px" class="btn btn-link">
+            <h4 class="card-title">{{fanfiction.title}}</h4>
+          </button>
+          <p class="text-muted">{{fanfiction.creationDate}}</p>
+        </div>
+        <p class="card-subtitle mb-2 text-muted"><strong>{{fanfiction.genre}}</strong></p>
+        <p class="card-text">{{fanfiction.description}}</p>
+        <span *ngFor="let tag of fanfiction.tags" class="badge badge-primary">{{tag}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p-paginator rows="10" totalRecords={{totalRecords}} (onPageChange)="paginate($event)"></p-paginator>
+
+</div>

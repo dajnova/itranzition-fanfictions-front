@@ -45,18 +45,21 @@ import {UserGuard} from './guard/user.guard';
 import { ReadComponent } from './read/read.component';
 import {RatingModule} from 'primeng/rating';
 import {SafeHtmlPipe} from './dom-sanitizer.pipe';
+import { MainFanficsComponent } from './main-fanfics/main-fanfics.component';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
   { path: 'cabinet', component: UserCabinetComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'user/:email', component: UserCabinetComponent},
-  { path: 'fresh', component: FreshComponent},
+  { path: 'fresh', component: MainComponent},
+  { path: 'hot', component: MainComponent},
   { path: 'fanfiction/edit/:id', component: FanficEditComponent},
   { path: 'fanfiction/edit', component: FanficEditComponent},
   { path: 'fanfiction/edit/:email/:id', component: FanficEditComponent, canActivate: [AdminGuard]},
   { path: 'tag', component: TagsCloudComponent},
   { path: 'read/:id', component: ReadComponent},
+  { path: 'tag/:tag', component: MainComponent},
   { path: '**', component: Error404Component}
 ];
 
@@ -78,7 +81,8 @@ const appRoutes: Routes = [
     Error404Component,
     TagsCloudComponent,
     ReadComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    MainFanficsComponent
   ],
   imports: [
     BrowserModule,
