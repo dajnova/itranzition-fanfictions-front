@@ -44,6 +44,7 @@ import {TagCloudModule} from 'angular-tag-cloud-module';
 import {UserGuard} from './guard/user.guard';
 import { ReadComponent } from './read/read.component';
 import {RatingModule} from 'primeng/rating';
+import {SafeHtmlPipe} from './dom-sanitizer.pipe';
 
 const appRoutes: Routes = [
   { path: '', component: MainComponent},
@@ -77,6 +78,7 @@ const appRoutes: Routes = [
     Error404Component,
     TagsCloudComponent,
     ReadComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,
