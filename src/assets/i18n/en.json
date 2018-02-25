@@ -1,4 +1,10 @@
 {
+  "CheckEmail": "To activate your account, follow the link in the email sent to you",
+  "User is disabled": "Account is not activated",
+  "RegistrationComplete": "Registration complete",
+  "UsernameNotUnique": "This username is already in use",
+  "EmailNotUnique": "This email is already in use",
+  "Bad credentials": "Invalid username/password",
   "Create fanfiction": "Create new fanfiction",
   "My fanfictions": "My fanfictions",
   "Registration": "Register",
@@ -32,5 +38,9 @@
   "back to main":"Go to main page",
   "genre":"Genre",
   "tags":"Tags",
-  "titlechaptertable":"Title"
+  "title":"Title",
+  "image": "Image",
+  "cancel": "Cancel",
+  "description": "Description",
+  "Chapters": "Chapters"
 }

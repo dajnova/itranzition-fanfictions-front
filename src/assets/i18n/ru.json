@@ -1,4 +1,10 @@
 {
+  "User is disabled": "Аккаунт не активирован",
+  "CheckEmail": "Чтобы активировать аккаунт перейдите по ссылке в высланном вам письме",
+  "RegistrationComplete": "Регистрация прошла успешно",
+  "UsernameNotUnique": "Этот логин уже занят",
+  "EmailNotUnique": "Этот email уже занят",
+  "Bad credentials": "Неверный логин/пароль",
   "Create fanfiction": "Создать новый фанфик",
   "My fanfictions": "Мои фанфики",
   "Registration": "Регистрация",
@@ -31,18 +37,18 @@
   "404 Not found":"404 Не найдено",
   "back to main":"На главную",
   "Edit fanfic":"Редактировать фанфик",
-  "Fanfic title":"Название фанфика",
-  "Fanfic description":"Описание фанфика",
+  "description":"Описание",
   "genre":"Жанр",
   "tags":"Тэги",
-  "Chapters list":"Список глав",
+  "Chapters":"Главы",
   "Add chapter":"Добавить главу",
-  "titlechaptertable":"Название",
+  "title":"Название",
   "Submit":"Отправить",
   "Chapter text":"Текст главы",
   "Chapter title":"Название главы",
   "Chapter image":"Изображение главы",
   "My account": "Мой аккаунт",
-  "Log out": "Выход"
-
+  "Log out": "Выход",
+  "image": "Изображение",
+  "cancel": "Отмена"
 }

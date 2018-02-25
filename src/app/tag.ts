@@ -1,4 +1,4 @@
-export class tag{
+export class Tag{
   tag: string;
   weight: number;
 }

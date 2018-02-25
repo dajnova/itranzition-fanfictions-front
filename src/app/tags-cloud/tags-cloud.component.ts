@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {CloudData, CloudOptions} from 'angular-tag-cloud-module';
 import {FanfictionsService} from '../services/fanfictions.service';
-import {tag} from '../tag';
+import {Tag} from '../tag';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 @Component({
   selector: 'app-tags-cloud',
@@ -11,27 +13,20 @@ import {tag} from '../tag';
 export class TagsCloudComponent implements OnInit {
 
   options: CloudOptions = {
-    width: 280,
-    height: 400,
+    width: 260,
     overflow: true
   };
 
   data: CloudData[] = [];
-  tagsList: tag[];
+  tagsList :Tag[] = [];
 
-
-  constructor(private tags: FanfictionsService) { }
+  constructor(private fanficService: FanfictionsService) { }
 
   ngOnInit() {
-    /*this.tags.getTagsList()
-      .subscribe(data => JSON.parse(this.tagsList = data));*/
-    this.tagsList.sort(this.compare);
-    for (let i = 0; i < 5; i++) {
-      this.data[i] = {text: this.tagsList[i].tag, weight: this.tagsList[i].weight, link: 'tags/' + this.tagsList[i].tag, color: '#ffaaee'};
-    }
+    this.getTagsList();
   }
 
-  compare(a: tag, b: tag) {
+  compare(a: Tag, b: Tag) {
     if (a.weight < b.weight) {
       return 1;
     }
@@ -39,6 +34,19 @@ export class TagsCloudComponent implements OnInit {
       return -1;
     }
     return 0;
+  }
+
+  getTagsList() {
+    this.fanficService.getTagsList()
+      .subscribe(data => {
+        let tags = JSON.parse(data);
+        let newTags = [];
+        for(let i = 0; i < tags.length; i++){
+            let cloudData = {text: tags[i].tag, weight: tags[i].weight, link: '/fanfictions/' + tags[i].tag};
+            newTags.push(cloudData);
+        }
+        this.data = newTags;
+      });
   }
 
 }

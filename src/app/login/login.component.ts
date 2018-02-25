@@ -3,6 +3,8 @@ import {Profile} from '../profile';
 import {AuthenticationService} from '../services/auth.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Message} from 'primeng/api';
+import { Response }  from "@angular/common/http";
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +18,7 @@ export class LoginComponent implements OnInit {
   password: string;
   userform: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AuthenticationService) { }
+  constructor(private fb: FormBuilder, private auth: AuthenticationService, private translate: TranslateService) { }
 
   ngOnInit() {
     this.userform = this.fb.group({
@@ -40,8 +42,16 @@ export class LoginComponent implements OnInit {
     };
     this.auth.login(user)
       .subscribe((data) => localStorage.setItem('currentUser', data),
-                 (err) => this.msgs.push({severity: 'error', summary: 'Error', detail: 'Activate your account first'})
+                 (err: Response) => {
+                   this.translate.get(err.error.message)
+                      .subscribe(s => this.showMessage('error', 'Error', s))
+                 }
       );
+  }
+
+  showMessage(severity, info, message){
+    this.msgs = [];
+    this.msgs.push({severity: severity, summary: info, detail: message});
   }
 
 }
