@@ -51,9 +51,10 @@
 </div>
 <div *ngIf="isReadMode()">
   <div class="container">
-    <div (scroll)="scrollPercentage()" *ngFor="let chapterText of fanfic.chapters">
+    <div (scroll)="scrollPercentage()" id="readModeText" *ngFor="let chapterText of fanfic.chapters">
       <header id="controlBar">
         <p-progressBar [value]="scrollPercentage()" [showValue]="false"></p-progressBar>
+        <div class="row">
         <button class="btn btn-secondary" (click)="switchMode()">{{'Back to site'|translate:user}}</button>
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -70,11 +71,11 @@
             {{'font size'|translate:user}}
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-            <a class="dropdown-item"><span style="font-size: smaller" (click)="setFontSize('smaller')">smaller</span></a>
-            <a class="dropdown-item"><span style="font-size: small" (click)="setFontSize('small')">small</span></a>
-            <a class="dropdown-item"><span style="font-size: medium" (click)="setFontSize('medium')">medium</span></a>
-            <a class="dropdown-item"><span style="font-size: large" (click)="setFontSize('large')">large</span></a>
-            <a class="dropdown-item"><span style="font-size: larger" (click)="setFontSize('larger')">larger</span></a>
+            <a class="dropdown-item"><span style="font-size: x-small" (click)="setFontSize('1')">x-small</span></a>
+            <a class="dropdown-item"><span style="font-size: small" (click)="setFontSize('2')">small</span></a>
+            <a class="dropdown-item"><span style="font-size: medium" (click)="setFontSize('3')">medium</span></a>
+            <a class="dropdown-item"><span style="font-size: large" (click)="setFontSize('4')">large</span></a>
+            <a class="dropdown-item"><span style="font-size: x-large" (click)="setFontSize('5')">x-large</span></a>
           </div>
         </div>
         <div class="dropdown">
@@ -89,11 +90,12 @@
             <a class="dropdown-item"><span (click)="setFont('Verdana, Arial, sans-serif')" style="font-family: Verdana, Arial, sans-serif;">A</span></a>
           </div>
         </div>
+        </div>
       </header>
-      <div id="readModeText">
+      <div>
         <h1>{{chapterText.title}}</h1>
         <img style="width:100%; height:auto;" class="img-fluid rounded" src="{{chapterText.imageURL}}">
-        <div innerHTML="{{chapterText.textBlock | safeHtml }}"></div>
+        <div [innerHTML]="chapterText.textBlock | safeHtml"></div>
       </div>
     </div>
   </div>
