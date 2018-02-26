@@ -20,7 +20,8 @@ export class AuthorizationFormComponent implements OnInit {
   }
 
   isAuthorized(): boolean {
-    let currentUser = localStorage.getItem('currentUser');
+    const currentUser = localStorage.getItem('currentUser');
+    // noinspection TypeScriptValidateTypes
     return currentUser && JSON.parse(currentUser).token;
   }
 
