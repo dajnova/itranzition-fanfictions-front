@@ -52,4 +52,10 @@ export class FanfictionsService {
       .map(data => JSON.stringify(data));
   }
 
+  addComment(comment, fanfictionId){
+    return this.http.post('/api/comments/add?fanfictionId=' + fanfictionId, comment)
+      .map(data => JSON.stringify(data));
+  }
+
+
 }

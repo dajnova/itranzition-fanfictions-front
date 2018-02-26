@@ -16,11 +16,11 @@
     <div class="col-3"></div>
     <div id="sort" class="col-2 text-right">
       <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Order by {{order}}</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{'Order by' | translate:user}}{{order}}</a>
         <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
-          <a (click)="setOrder('title')" class="dropdown-item">title</a>
-          <a (click)="setOrder('genre')" class="dropdown-item">genre</a>
-          <a (click)="setOrder('creationDate')" class="dropdown-item">creation date</a>
+          <a (click)="setOrder('title')" class="dropdown-item">{{'title' | translate:user}}</a>
+          <a (click)="setOrder('genre')" class="dropdown-item">{{'genre' | translate:user}}</a>
+          <a (click)="setOrder('creationDate')" class="dropdown-item">{{'creation date' | translate:user}}</a>
         </div>
       </div>
     </div>
@@ -46,8 +46,8 @@
       </div>
     </div>
     <div class="card-footer text-muted text-right">
-      <button (click)="editFanfiction(fanfiction.id)" type="button" class="btn btn-info">Edit</button>
-      <button (click)="deleteFanfiction(fanfiction.id)" type="button" class="btn btn-outline-danger">Delete</button>
+      <button (click)="editFanfiction(fanfiction.id)" type="button" class="btn btn-info">{{'edit' | translate:user}}</button>
+      <button (click)="deleteFanfiction(fanfiction.id)" type="button" class="btn btn-outline-danger">{{'delete' | translate:user}}</button>
     </div>
   </div>
 

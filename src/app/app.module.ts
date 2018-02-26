@@ -46,17 +46,19 @@ import { ReadComponent } from './components/read/read.component';
 import {RatingModule} from 'primeng/rating';
 import {SafeHtmlPipe} from './assistance/dom-sanitizer.pipe';
 import { MainFanficsComponent } from './components/main-fanfics/main-fanfics.component';
+import {RatingService} from './services/rating.service'
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'hot', pathMatch: 'full'},
-  { path: 'cabinet', component: UserCabinetComponent},
-  { path: 'admin', component: AdminComponent},
-  { path: 'user/:email', component: UserCabinetComponent},
+  { path: 'cabinet', component: UserCabinetComponent, canActivate: [UserGuard]},
+  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard]},
+  { path: 'user/:email', component: UserCabinetComponent, canActivate: [AdminGuard]},
   { path: 'fresh', component: MainComponent},
   { path: 'hot', component: MainComponent},
-  { path: 'fanfiction/edit/:id', component: FanficEditComponent},
-  { path: 'fanfiction/edit', component: FanficEditComponent},
+  { path: 'fanfiction/edit/:id', component: FanficEditComponent, canActivate: [UserGuard]},
+  { path: 'fanfiction/edit', component: FanficEditComponent, canActivate: [UserGuard]},
   { path: 'fanfiction/edit/:email/:id', component: FanficEditComponent, canActivate: [AdminGuard]},
+  { path: 'fanfiction/edit/:email', component: FanficEditComponent, canActivate: [AdminGuard]},
   { path: 'tag', component: TagsCloudComponent},
   { path: 'read/:id', component: ReadComponent},
   { path: 'tag/:tag', component: MainComponent},
@@ -127,12 +129,18 @@ const appRoutes: Routes = [
       useClass: JwtInterceptor,
       multi: true
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptor,
+      multi: true
+    },
     AuthenticationService,
     UsersService,
     FanfictionsService,
     AdminGuard,
     UploadsService,
-    UserGuard
+    UserGuard,
+    RatingService
   ],
   bootstrap: [AppComponent]
 })
