@@ -13,7 +13,7 @@ import {SafeHtmlPipe} from '../dom-sanitizer.pipe';
 export class ReadComponent implements OnInit {
 
   chapter: Chapter;
-   commentaries: Comments[] = [];
+   //commentaries: Comments[] = [];
   // likes: Likes[]=[];
   // ratings: Ratings[]=[];
   readMode: boolean;
@@ -72,6 +72,16 @@ export class ReadComponent implements OnInit {
     return (( s / (c - h)) * 100);
   }
 
+  setWidth(value) {
+    document.getElementById('readModeText').style.width = value;
+  }
 
+  setFont(value) {
+    document.getElementById('readModeText').style.fontFamily = value;
+  }
+
+  setFontSize(value) {
+    document.getElementById('readModeText').style.fontSize = value;
+  }
 
 }

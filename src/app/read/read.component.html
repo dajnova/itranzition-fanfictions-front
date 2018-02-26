@@ -14,14 +14,12 @@
           </div>
           <hr class="my-1">
           <h5 class="label">{{fanfic.description}}</h5>
-
           <div style="margin-top:32px">
             <h1 class="display-3">{{chapter.title}}</h1>
             <img style="width:100%; height:auto;" src="{{chapter.imageURL}}" class="img-fluid rounded">
             <hr class="my-4">
             <div [innerHTML]="chapter.textBlock | safeHtml"></div>
           </div>
-
           <p-paginator rows="1" (onPageChange)="paginate($event)" totalRecords="{{fanfic.chapters.length}}"></p-paginator>
           <div *ngIf="isAuthenticated()" id="commentaries">
             <div *ngFor="let comment of commentaries">
@@ -54,13 +52,49 @@
 <div *ngIf="isReadMode()">
   <div class="container">
     <div (scroll)="scrollPercentage()" *ngFor="let chapterText of fanfic.chapters">
-      <h1>{{chapterText.title}}</h1>
-      <img style="width:100%; height:auto;" class="img-fluid rounded" src="{{chapterText.imageURL}}">
-      <div innerHTML="{{chapterText.textBlock}}"></div>
-    </div>
-    <div id="controlBar">
-      <button class="btn btn-secondary" (click)="switchMode()">{{'Back to site'|translate:user}}</button>
-      <p-progressBar [value]="scrollPercentage()" [showValue]="false"></p-progressBar>
+      <header id="controlBar">
+        <p-progressBar [value]="scrollPercentage()" [showValue]="false"></p-progressBar>
+        <button class="btn btn-secondary" (click)="switchMode()">{{'Back to site'|translate:user}}</button>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{'text width'|translate:user}}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <a class="dropdown-item"><span (click)="setWidth('60%')">60%</span></a>
+            <a class="dropdown-item"><span (click)="setWidth('75%')">75%</span></a>
+            <a class="dropdown-item"><span (click)="setWidth('100%')">100%</span></a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{'font size'|translate:user}}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+            <a class="dropdown-item"><span style="font-size: smaller" (click)="setFontSize('smaller')">smaller</span></a>
+            <a class="dropdown-item"><span style="font-size: small" (click)="setFontSize('small')">small</span></a>
+            <a class="dropdown-item"><span style="font-size: medium" (click)="setFontSize('medium')">medium</span></a>
+            <a class="dropdown-item"><span style="font-size: large" (click)="setFontSize('large')">large</span></a>
+            <a class="dropdown-item"><span style="font-size: larger" (click)="setFontSize('larger')">larger</span></a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{'font'|translate:user}}
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+            <a class="dropdown-item"><span (click)="setFont('Comic Sans MS')" style="font-family: Comic Sans MS;">A</span></a>
+            <a class="dropdown-item"><span (click)="setFont('Georgia, Times New Roman, serif')" style="font-family: Georgia, Times New Roman, serif;">A</span></a>
+            <a class="dropdown-item"><span (click)="setFont('Arial, Helvetica, sans-serif')" style="font-family: Arial, Helvetica, sans-serif;">A</span></a>
+            <a class="dropdown-item"><span (click)="setFont('Courier')" style="font-family: Courier;">A</span></a>
+            <a class="dropdown-item"><span (click)="setFont('Verdana, Arial, sans-serif')" style="font-family: Verdana, Arial, sans-serif;">A</span></a>
+          </div>
+        </div>
+      </header>
+      <div id="readModeText">
+        <h1>{{chapterText.title}}</h1>
+        <img style="width:100%; height:auto;" class="img-fluid rounded" src="{{chapterText.imageURL}}">
+        <div innerHTML="{{chapterText.textBlock | safeHtml }}"></div>
+      </div>
     </div>
   </div>
 </div>

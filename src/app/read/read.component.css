@@ -18,7 +18,7 @@ app-navbar{
 #controlBar{
   position: fixed;
   left: 0;
-  bottom: 0;
+  top: 0;
   width:100%;
   background: lightgreen;
 }
