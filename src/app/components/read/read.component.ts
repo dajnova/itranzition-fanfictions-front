@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {Chapter} from '../../models/chapter';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Fanfiction} from '../../models/fanfiction';
+import {Rating} from '../../models/rating';
 import {FanfictionsService} from '../../services/fanfictions.service';
-import { Comment } from '../../models/Comments';
+import {RatingService} from '../../services/rating.service';
+import { Comment } from '../../models/comment';
 import {SafeHtmlPipe} from '../../assistance/dom-sanitizer.pipe';
 
 @Component({
@@ -14,23 +16,59 @@ import {SafeHtmlPipe} from '../../assistance/dom-sanitizer.pipe';
 export class ReadComponent implements OnInit {
 
   chapter: Chapter;
-   commentaries: Comment[] = [];
   // likes: Likes[]=[];
   // ratings: Ratings[]=[];
   readMode: boolean;
   fanfic: Fanfiction;
   value: number;
+  rating: Rating;
+  comment: Comment;
+  id: string;
 
-  constructor(private route: ActivatedRoute, private fanficService: FanfictionsService) { }
+  constructor(private route: ActivatedRoute, private fanficService: FanfictionsService, private ratingService: RatingService) { }
 
   ngOnInit() {
-    this.chapter = new Chapter();
+    this.comment = new Comment();
+    this.comment.text='';
+    this.comment.author='';
+    this.rating = new Rating();
     this.fanfic = new Fanfiction();
-    const id = this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id');
     this.readMode = false;
-    this.value = 0;
+    this.rating.averageRate = 0;
+    this.rating.myRate = 0;
     window.addEventListener('scroll', this.scrollPercentage, true);
-    this.getFanfiction(id);
+    this.getFanfiction(this.id);
+  }
+
+  getChapterRating(){
+    this.ratingService.getChapterRating(this.chapter.id)
+      .subscribe(data => {
+        this.rating = JSON.parse(data);
+        console.log(this.rating.myRate);
+      });
+  }
+
+  submit() {
+    this.fanficService.addComment(this.comment, this.id)
+      .subscribe(data => {});
+  }
+
+  emptyComment(){
+    if(this.comment.text.length > 10) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  isRated() {
+    if(this.rating.myRate > 0) {
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   getFanfiction(id) {
@@ -38,12 +76,21 @@ export class ReadComponent implements OnInit {
       .subscribe(data => {
         this.fanfic = JSON.parse(data);
         this.chapter = this.fanfic.chapters[0];
-        console.log(this.fanfic.chapters[0].textBlock);
+        this.getChapterRating();
       });
   }
 
   isReadMode() {
     return this.readMode;
+  }
+
+  onRate(event){
+    let rating = {rate: event.value};
+    this.ratingService.setChapterRating(this.chapter.id, rating)
+      .subscribe(data =>{
+        alert("Rate submitted");
+        this.getChapterRating();
+      });
   }
 
   isAuthenticated() {
@@ -71,18 +118,6 @@ export class ReadComponent implements OnInit {
     const h = document.documentElement.clientHeight;
     const c = document.documentElement.scrollHeight;
     return (( s / (c - h)) * 100);
-  }
-
-  setWidth(value) {
-    document.getElementById('readModeText').style.width = value;
-  }
-
-  setFont(value) {
-    document.getElementById('readModeText').style.fontFamily = value;
-  }
-
-  setFontSize(value) {
-    document.getElementById('readModeText').style.fontSize = value;
   }
 
 }

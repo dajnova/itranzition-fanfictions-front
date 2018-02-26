@@ -46,6 +46,7 @@ import { ReadComponent } from './components/read/read.component';
 import {RatingModule} from 'primeng/rating';
 import {SafeHtmlPipe} from './assistance/dom-sanitizer.pipe';
 import { MainFanficsComponent } from './components/main-fanfics/main-fanfics.component';
+import {RatingService} from './services/rating.service'
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'hot', pathMatch: 'full'},
@@ -132,7 +133,8 @@ const appRoutes: Routes = [
     FanfictionsService,
     AdminGuard,
     UploadsService,
-    UserGuard
+    UserGuard,
+    RatingService
   ],
   bootstrap: [AppComponent]
 })
