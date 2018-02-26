@@ -13,7 +13,7 @@ import {SafeHtmlPipe} from '../dom-sanitizer.pipe';
 export class ReadComponent implements OnInit {
 
   chapter: Chapter;
-  // commentaries: Comments[] = [];
+   commentaries: Comments[] = [];
   // likes: Likes[]=[];
   // ratings: Ratings[]=[];
   readMode: boolean;
@@ -71,4 +71,7 @@ export class ReadComponent implements OnInit {
     const c = document.documentElement.scrollHeight;
     return (( s / (c - h)) * 100);
   }
+
+
+
 }

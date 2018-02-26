@@ -24,7 +24,21 @@
 
           <p-paginator rows="1" (onPageChange)="paginate($event)" totalRecords="{{fanfic.chapters.length}}"></p-paginator>
           <div *ngIf="isAuthenticated()" id="commentaries">
-
+            <div *ngFor="let comment of commentaries">
+            <h1 class="my-4"></h1>
+            <h1>{{'Commentaries' | translate:user}}</h1>
+            <div class="card mb-3">
+              <h3 class="card-header">{{comment.user}}</h3>
+              <div class="card-body">
+                <p>{{comment.text}}</p>
+              </div>
+              <div class="card-footer text-muted">
+                <button [disabled]="isLiked()" (click)="like(comment.id)" class="btn btn-primary glyphicon glyphicon-heart">
+                    {{comment.likesCount}}
+                </button>
+              </div>
+            </div>
+            </div>
           </div>
         </div>
       </div>
