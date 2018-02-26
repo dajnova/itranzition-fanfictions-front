@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Chapter} from '../chapter';
+import {Chapter} from '../../models/chapter';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Fanfiction} from '../fanfiction';
-import {FanfictionsService} from '../services/fanfictions.service';
-import {SafeHtmlPipe} from '../dom-sanitizer.pipe';
+import {Fanfiction} from '../../models/fanfiction';
+import {FanfictionsService} from '../../services/fanfictions.service';
+import { Comment } from '../../models/Comments';
+import {SafeHtmlPipe} from '../../assistance/dom-sanitizer.pipe';
 
 @Component({
   selector: 'app-read',
@@ -13,7 +14,7 @@ import {SafeHtmlPipe} from '../dom-sanitizer.pipe';
 export class ReadComponent implements OnInit {
 
   chapter: Chapter;
-   //commentaries: Comments[] = [];
+   commentaries: Comment[] = [];
   // likes: Likes[]=[];
   // ratings: Ratings[]=[];
   readMode: boolean;

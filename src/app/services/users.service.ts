@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Router} from '@angular/router';
-import {Profile} from '../profile';
-import {User} from '../user';
+import {Profile} from '../models/profile';
+import {User} from '../models/user';
 
 @Injectable()
 export class UsersService {

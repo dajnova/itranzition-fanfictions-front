@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {UsersService} from '../services/users.service';
-import { User } from '../user';
+import {UsersService} from '../../services/users.service';
+import { User } from '../../models/user';
 import {Router} from '@angular/router';
 import { SelectionModel } from '@angular/cdk/collections';
 import {MatSort, MatSortHeaderIntl, MatTableDataSource} from '@angular/material';

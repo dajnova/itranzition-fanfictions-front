@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {UsersService} from '../services/users.service';
+import {UsersService} from '../../services/users.service';
 import {Message, SelectItem} from 'primeng/api';
-import {Profile} from '../profile';
-import {AuthenticationService} from '../services/auth.service';
+import {Profile} from '../../models/profile';
+import {AuthenticationService} from '../../services/auth.service';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({

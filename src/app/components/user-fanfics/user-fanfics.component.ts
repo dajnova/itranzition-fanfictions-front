@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {FanfictionsService} from '../services/fanfictions.service';
-import {Fanfiction} from '../fanfiction';
+import {FanfictionsService} from '../../services/fanfictions.service';
+import {Fanfiction} from '../../models/fanfiction';
 import { OrderPipe } from 'ngx-order-pipe';
 import {PaginatorModule} from 'primeng/paginator';
-import {FilterPipe} from '../filter.pipe';
+import {FilterPipe} from '../../assistance/filter.pipe';
 import {Router} from '@angular/router';
 import {ActivatedRoute} from '@angular/router';
 

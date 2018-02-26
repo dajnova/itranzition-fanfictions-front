@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Validators, FormControl, FormGroup, FormBuilder} from '@angular/forms';
 import {Message, SelectItem} from 'primeng/api';
-import {AuthenticationService} from '../services/auth.service';
-import {Profile} from '../profile';
+import {AuthenticationService} from '../../services/auth.service';
+import {Profile} from '../../models/profile';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import {Router} from '@angular/router';
-import {Profile} from '../profile';
+import {Profile} from '../models/profile';
 
 @Injectable()
 export class AuthenticationService {

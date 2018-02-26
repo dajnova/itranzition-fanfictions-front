@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CloudData, CloudOptions} from 'angular-tag-cloud-module';
-import {FanfictionsService} from '../services/fanfictions.service';
-import {Tag} from '../tag';
+import {FanfictionsService} from '../../services/fanfictions.service';
+import {Tag} from '../../models/tag';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 

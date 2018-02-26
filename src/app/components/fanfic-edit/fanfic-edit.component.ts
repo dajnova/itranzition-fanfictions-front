@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Fanfiction} from '../fanfiction';
-import {Chapter} from '../chapter';
+import {Fanfiction} from '../../models/fanfiction';
+import {Chapter} from '../../models/chapter';
 import {HttpClient} from '@angular/common/http';
-import {FanfictionsService} from '../services/fanfictions.service';
-import {UsersService} from '../services/users.service';
-import {UploadsService} from '../services/uploads.service';
+import {FanfictionsService} from '../../services/fanfictions.service';
+import {UsersService} from '../../services/users.service';
+import {UploadsService} from '../../services/uploads.service';
 import {Observable} from 'rxjs';
 import {Message, SelectItem} from 'primeng/api';
 import {Router} from '@angular/router';

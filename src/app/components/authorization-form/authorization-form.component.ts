@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from '../services/auth.service';
-import {Profile} from '../profile';
+import {AuthenticationService} from '../../services/auth.service';
+import {Profile} from '../../models/profile';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {UsersService} from '../services/users.service';
+import {UsersService} from '../../services/users.service';
 
 @Component({
   selector: 'app-authorization-form',

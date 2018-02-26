@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Profile} from '../profile';
-import {AuthenticationService} from '../services/auth.service';
+import {Profile} from '../../models/profile';
+import {AuthenticationService} from '../../services/auth.service';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Message} from 'primeng/api';
 import {TranslateService} from '@ngx-translate/core';
